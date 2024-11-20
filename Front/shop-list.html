@@ -176,80 +176,8 @@
 				</ul> 
 
 				<ul>
-					<li>
-						<!-- Begin shopping cart trigger  -->
-						<div id="shopping-cart-trigger">
-							<a href="#0" class="cart-icon" title="Shopping Cart" data-toggle="modal" data-target="#modal-38875649">
-								<i class="fas fa-shopping-bag"></i>
-								<span class="cart-num">2</span>
-							</a>
-						</div>
-						<!-- End shopping cart trigger -->
-
-						<!-- Begin modal (for shopping cart) -->
-						<div id="modal-38875649" class="modal modal-center fade" tabindex="-1" role="dialog" aria-hidden="false">
-							<div class="modal-dialog max-width-500">
-								<div class="modal-content">
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-										<h4 class="modal-title">2 items in your cart</h4>
-									</div>
-									<div class="modal-body">
-
-										<!-- Begin shopping cart content -->
-										<div class="cart-content">
-											<ul class="cart-product-list">
-												<li>
-													<!-- Begin shopping cart product -->
-													<div class="cart-product">
-														<a href="shop-single.html" class="cart-pr-thumb bg-image" style="background-image: url(assets/img/shop/shop-7.jpg); background-position: 50% 50%;"></a>
-														<div class="cart-pr-info">
-															<a href="shop-single.html" class="cart-pr-title">Malia/a>
-															<div class="cart-pr-price">Price: <span>200.000DT</span></div>
-															<div class="cart-pr-quantity">Cuantity: <span>1</span></div>
-														</div>
-														<a href="#0" class="cart-pr-remove" title="Remove from cart">×</a>
-													</div>
-													<!-- End shopping cart product -->
-												</li>
-
-												<li>
-													<!-- Begin shopping cart product -->
-													<div class="cart-product">
-														<a href="shop-single.html" class="cart-pr-thumb bg-image" style="background-image: url(assets/img/shop/shop-2.jpg); background-position: 50% 50%;"></a>
-														<div class="cart-pr-info">
-															<a href="shop-single.html" class="cart-pr-title">Sefsari</a>
-															<div class="cart-pr-price">Price: <span>150.000DT</span></div>
-															<div class="cart-pr-quantity">Quantity:1 <span>1</span></div>
-														</div>
-														<a href="#0" class="cart-pr-remove" title="Remove from cart">×</a>
-													</div>
-													<!-- End shopping cart product -->
-												</li>
-											</ul>
-										</div>
-										<!-- End shopping cart content -->
-
-									</div>
-									<div class="modal-footer padding-vertical-0">
-										<div class="cart-total">
-											<strong>Subtotal:</strong> <span>350.000DT</div>/span>
-										</div>
-										<div class="row">
-											<div class="col-xs-6 no-padding">
-												<a href="shop-cart.html" class="btn btn-dark btn-block btn-lg no-margin">View Cart</a>
-											</div> <!-- /.col -->
-
-											<div class="col-xs-6 no-padding">
-												<a href="shop-checkout.html" class="btn btn-primary btn-block btn-lg no-margin">Checkout</a>
-											</div> <!-- /.col -->
-										</div> <!-- /.row -->
-									</div>
-								</div> <!-- /.modal-content -->
-							</div> <!-- /.modal-dialog -->
-						</div>
-						<!-- End modal -->
-					</li>
+					
+					
 				</ul>
 			</div>
 			<!-- End header attriputes -->
@@ -266,7 +194,7 @@
 			<!-- Begin shop filter header -->
 			<div class="shop-filter-header">
 				<a href="#" class="shop-filter-close">×</a>
-				<h4 class="shop-filter-title">Product Filter</h4>
+				<h4 class="shop-filter-title">Products</h4>
 			</div>
 			<!-- End shop filter header -->
 
@@ -294,7 +222,11 @@
 						<li><a href="chechia.html" class="sm-scroll">Chechia <span></span></a></li>
 						<li><a href="caftan.html" class="sm-scroll">Caftan <span></span></a></li>
 						<li><a href="kachabiya.html" class="sm-scroll">Bornous<span></span></a></li>
-						<li><a href="next1.html" class="sm-scroll">Accessories <span></span></a></li>
+						<li><a href="necklace.html" class="sm-scroll">Necklaces<span></span></a></li>
+						<li><a href="earrings.html" class="sm-scroll">Earrings<span></span></a></li>
+						<li><a href="rings.html" class="sm-scroll">Rings<span></span></a></li>
+						<li><a href="next1.html" class="sm-scroll">More<span></span></a></li>
+						
 					</ul>
 					<!-- End product categories -->
 					
@@ -303,65 +235,13 @@
 				<!-- Begin shop filter form -->
 				<form id="shop-filter-form">
 
-					<div class="shop-filter-box">
-						<h4 class="sfb-heading">Product Sort/Show</h4>
-
-						<!-- Begin product sort -->
-						<select class="form-control">
-							<option value="" selected>Sort by: Newest items</option>
-							<option value="1">Oldest items</option>
-							<option value="2">Trending items</option>
-							<option value="3">Best rated</option>
-							<option value="4">Price: low to high</option>
-							<option value="5">Price: high to low</option>
-						</select>
-						<!-- End product sort -->
-
-						<!-- Begin product show on page -->
-						<select class="form-control margin-top-10">
-							<option value="" selected>Show on page: 10 items</option>
-							<option value="1">20 items</option>
-							<option value="2">30 items</option>
-							<option value="3">50 items</option>
-							<option value="4">100 items</option>
-						</select>
-						<!-- End product show on page -->
-						
-					</div> <!-- /.shop-filter-box -->
-
-					<div class="shop-filter-box">
-						<h4 class="sfb-heading">Filter By Price Range</h4>
-
-						<!-- Begin price range slider -->
-						<div class="price-range-slider-wrap">
-							<div id="price-range-slider"></div>
-							<div class="price-range">
-								<label for="amount">Price:</label>
-								<input type="text" id="amount" readonly>
-								<button type="submit" class="btn btn-primary btn-xs hide">Filter</button> <!-- remove class "hide" if needed -->
-							</div>
-						</div>
+				
+				
 						<!-- End price range slider -->
 						
-					</div> <!-- /.shop-filter-box -->
+					<!-- /.shop-filter-box -->
 
-					<div class="shop-filter-box">
-						<h4 class="sfb-heading">Filter By Price</h4>
-
-						<!-- Begin filter by price -->
-						<div class="radio-button-styled">
-							<label>
-								<input type="radio" name="check-92564092" id="check-77833492" value="option1">
-								<span class="box"></span> $0 - $100
-							</label>
-							<label>
-								<input type="radio" name="check-92564092" id="check-2983423" value="option1">
-								<span class="box"></span> $100 - $250
-							</label>
-							<label>
-								<input type="radio" name="check-92564092" id="check-18987234" value="option1">
-								<span class="box"></span> $250 - $500
-							</label>
+				
 							
 							
 						</div>
@@ -369,50 +249,12 @@
 						
 					</div> <!-- /.shop-filter-box -->
 
-					<div class="shop-filter-box">
-						<h4 class="sfb-heading">Filter By Color</h4>
-
-						<!-- Begin filter by color -->
-						<div class="checkbox-styled">
-							<label>
-								<input type="checkbox" name="check-93456936" id="check-00836549" value="option1">
-								<span class="box"></span> Red <span class="filter-count">(17)</span>
-							</label>
-							<label>
-								<input type="checkbox" name="check-93456936" id="check-74787956" value="option2">
-								<span class="box"></span> Blue <span class="filter-count">(42)</span>
-							</label>
-							<label>
-								<input type="checkbox" name="check-93456936" id="check-23496555" value="option3">
-								<span class="box"></span> Green <span class="filter-count">(26)</span>
-							</label>
-						</div>
+				
 						<!-- End filter by color -->
 						
 					</div> <!-- /.shop-filter-box -->
 
-					<div class="shop-filter-box">
-						<h4 class="sfb-heading">Filter By Size</h4>
-
-						<!-- Begin filter by size -->
-						<div class="checkbox-styled">
-							<label>
-								<input type="checkbox" name="check-65388961" id="check-47671127" value="option1">
-								<span class="box"></span> S <span class="filter-count">(6)</span>
-							</label>
-							<label>
-								<input type="checkbox" name="check-65388961" id="check-65348756" value="option1">
-								<span class="box"></span> M <span class="filter-count">(19)</span>
-							</label>
-							<label>
-								<input type="checkbox" name="check-65388961" id="check-12983466" value="option1">
-								<span class="box"></span> L <span class="filter-count">(38)</span>
-							</label>
-							<label>
-								<input type="checkbox" name="check-65388961" id="check-28946354" value="option2">
-								<span class="box"></span> XL <span class="filter-count">(12)</span>
-							</label>
-							
+					
 						</div>
 						<!-- End filter by size -->
 						
@@ -421,9 +263,7 @@
 				 <!-- /.shop-filter-box -->
 
 					<!-- Begin shop filter buttons -->
-					<div class="shop-filter-buttons">
-						<button type="submit" id="shop-filter-submit" class="btn btn-primary btn-block btn-sm margin-top-10">Filter</button>
-					</div>
+					
 					<!-- End shop filter buttons -->
 
 				</form>
@@ -452,17 +292,51 @@
 				<section id="page-header" data-percent-height="0.9">
 
 					<!-- Begin page header image -->
-					<div class="page-header-image parallax fade-out-scroll-6 bg-image" style="background-image: url(assets/img/page-header/page-header-bg-19.jpg); background-position: 50% 30%;">
+					<div class="page-header-image parallax fade-out-scroll-6 bg-image" style="background-image: url(assets/img/page-header/page-header-bg-30.jpg); background-position: 50% 30%;">
+						<a href="#shop-list-section" class="scroll-down sm-scroll hide-from-sm" title="Scroll down"></a>
+					<!-- Begin page header caption -->
+<!-- Begin page header caption -->
+<div class="page-header-caption">
+    <h1>Welcome To Our Shop!</h1>
+</div>
 
-						<!-- Begin page header caption -->
-						<div class="page-header-caption">
-							<h1 class="page-header-title">Welcome To Our Shop ! </h1>
-							<div class="page-header-sub-title-wrap">
-								<div class="margin-top-20">
-									
-								</div>
-							</div>
-						</div>
+<style>
+    /* General styling for the page header caption */
+    .page-header-caption {
+       
+        padding: 50px 20px;         /* Padding around the text */
+        text-align: center;         /* Center the content */
+     
+        margin-bottom: 30px;        /* Space below the header */
+        opacity: 0;                 /* Initially hidden */
+        animation: fadeIn 2s forwards; /* Animation for fade-in effect */
+    }
+
+    /* Styling for the h1 heading */
+    .page-header-caption h1 {
+        font-size: 3rem;            /* Large text size */
+        color: #ffffff;                /* Dark gray text color */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+        text-transform: uppercase;  /* Uppercase text */
+        letter-spacing: 2px;        /* Spacing between letters */
+        margin: 0;                  /* Remove default margin */
+        padding: 0;                 /* Remove default padding */
+    }
+
+    /* Keyframes for the fade-in animation */
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;             /* Start with the text hidden */
+            transform: translateY(-30px); /* Start slightly above */
+        }
+        100% {
+            opacity: 1;             /* End with the text fully visible */
+            transform: translateY(0); /* Move to its normal position */
+        }
+    }
+</style>
+
+
 						<!-- End page header caption -->
 
 						<!-- Begin scroll down button -->
@@ -514,8 +388,7 @@
 											<div class="sli-meta">
 												<a href="chechia.html" class="sli-link">
 													<h2 class="sli-title">Chechia</h2>
-													<p class="sli-category">Headgear</p>
-													<div class="sli-price">20.00DT</div>
+												
 												</a>
 											</div>
 											
@@ -539,11 +412,7 @@
 											<div class="sli-meta">
 												<a href="sefsari.html" class="sli-link">
 													<h2 class="sli-title">Sefsari</h2>
-													<p class="sli-category">Tunisian Veil</p>
-													<div class="sli-price">
-														<span class="sli-price-old">250.000DT</span> 
-														<span class="sli-price-new">150.000DT</span>
-													</div>
+												
 												</a>
 											</div>
 										
@@ -568,8 +437,7 @@
 											<div class="sli-meta">
 												<a href="jebba.html" class="sli-link">
 													<h2 class="sli-title">Jebba</h2>
-													<p class="sli-category">loose fitting garment</p>
-													<div class="sli-price">29.00DT</div>
+												
 												</a>
 											</div>
 										
@@ -593,8 +461,7 @@
 											<div class="sli-meta">
 												<a href="kachabiya.html" class="sli-link">
 													<h2 class="sli-title">Bornous</h2>
-													<p class="sli-category">Winter</p>
-													<div class="sli-price">120.00DT</div>
+												
 												</a>
 											</div>
 											
@@ -618,11 +485,8 @@
 											<div class="sli-meta">
 												<a href="caftan.html" class="sli-link">
 													<h2 class="sli-title">Caftan</h2>
-													<p class="sli-category">Dress</p>
-													<div class="sli-price">
-														<span class="sli-price-old">500.00DT</span> 
-														<span class="sli-price-new">429.00DT</span>
-													</div>
+													
+												
 												</a>
 											</div>
 											
@@ -647,8 +511,7 @@
 											<div class="sli-meta">
 												<a href="malia.html" class="sli-link">
 													<h2 class="sli-title">Malia</h2>
-													<p class="sli-category">Dress</p>
-													<div class="sli-price">200.00DT</div>
+													
 												</a>
 											</div>
 										
@@ -673,10 +536,6 @@
 												<a href="Kamis.html" class="sli-link">
 													<h2 class="sli-title">Kamis</h2>
 												
-													<div class="sli-price">
-														<span class="sli-price-old">120.000DT</span> 
-														<span class="sli-price-new">90.00DT</span>
-													</div>
 												</a>
 											</div>
 											
@@ -702,7 +561,7 @@
 												<a href="sarouel.html" class="sli-link">
 													<h2 class="sli-title">Sarouel</h2>
 													
-													<div class="sli-price">90.00DT</div>
+													
 												</a>
 											</div>
 										
@@ -724,10 +583,9 @@
 									<div class="shop-list-item bg-image" style="background-image: url(assets/img/shop/shop-9.jpg); background-position: 50% 50%">
 										<div class="sli-hover">
 											<div class="sli-meta">
-												<a href="balgha.html" class="sli-link">
+												<a href="kholkhal.html" class="sli-link">
 													<h2 class="sli-title">Balgha</h2>
-													<p class="sli-category">Footwear</p>
-													<div class="sli-price">150.00DT</div>
+													
 												</a>
 											</div>
 											
@@ -872,7 +730,7 @@
 		<!-- Theme master JS -->
 		<script src="assets/js/theme.js"></script>
 
-
+		<script src="assets/js/filtering.js"></script>
 
 		<!--==============================
 		///// Begin Google Analytics /////

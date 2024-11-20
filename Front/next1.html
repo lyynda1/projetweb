@@ -171,79 +171,7 @@
 				</ul> 
 
 				<ul>
-					<li>
-						<!-- Begin shopping cart trigger  -->
-						<div id="shopping-cart-trigger">
-							<a href="#0" class="cart-icon" title="Shopping Cart" data-toggle="modal" data-target="#modal-38875649">
-								<i class="fas fa-shopping-bag"></i>
-								<span class="cart-num">2</span>
-							</a>
-						</div>
-						<!-- End shopping cart trigger -->
-
-						<!-- Begin modal (for shopping cart) -->
-						<div id="modal-38875649" class="modal modal-center fade" tabindex="-1" role="dialog" aria-hidden="false">
-							<div class="modal-dialog max-width-500">
-								<div class="modal-content">
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-										<h4 class="modal-title">2 items in your cart</h4>
-									</div>
-									<div class="modal-body">
-
-										<!-- Begin shopping cart content -->
-										<div class="cart-content">
-											<ul class="cart-product-list">
-												<li>
-													<!-- Begin shopping cart product -->
-													<div class="cart-product">
-														<a href="shop-single.html" class="cart-pr-thumb bg-image" style="background-image: url(assets/img/shop/shop-7.jpg); background-position: 50% 50%;"></a>
-														<div class="cart-pr-info">
-															<a href="shop-single.html" class="cart-pr-title">Malia </a>
-															<div class="cart-pr-price">Price: <span>200.000DT</span></div>
-															<div class="cart-pr-quantity">Quantity: <span>1</span></div>
-														</div>
-														<a href="#0" class="cart-pr-remove" title="Remove from cart">×</a>
-													</div>
-													<!-- End shopping cart product -->
-												</li>
-
-												<li>
-													<!-- Begin shopping cart product -->
-													<div class="cart-product">
-														<a href="shop-single.html" class="cart-pr-thumb bg-image" style="background-image: url(assets/img/shop/shop-2.jpg); background-position: 50% 50%;"></a>
-														<div class="cart-pr-info">
-															<a href="shop-single.html" class="cart-pr-title">Sefsari</a>
-															<div class="cart-pr-price">Price: <span>150.000DT</span></div>
-															<div class="cart-pr-quantity">Quantity: <span>1</span></div>
-														</div>
-														<a href="#0" class="cart-pr-remove" title="Remove from cart">×</a>
-													</div>
-													<!-- End shopping cart product -->
-												</li>
-											</ul>
-										</div>
-										<!-- End shopping cart content -->
-
-									</div>
-									<div class="modal-footer padding-vertical-0">
-										<div class="cart-total">
-											<strong>Subtotal:</strong> <span>350.000DT</span>
-										</div>
-										<div class="row">
-											<div class="col-xs-6 no-padding">
-												<a href="shop-cart.html" class="btn btn-dark btn-block btn-lg no-margin">View Cart</a>
-											</div> <!-- /.col -->
-
-											<div class="col-xs-6 no-padding">
-												<a href="shop-checkout.html" class="btn btn-primary btn-block btn-lg no-margin">Checkout</a>
-											</div> <!-- /.col -->
-										</div> <!-- /.row -->
-									</div>
-								</div> <!-- /.modal-content -->
-							</div> <!-- /.modal-dialog -->
-						</div>
-						<!-- End modal -->
+					
 					</li>
 				</ul>
 			</div>
@@ -460,16 +388,49 @@
 					<!-- Begin page header image -->
 					<div class="page-header-image parallax fade-out-scroll-6 bg-image" style="background-image: url(assets/img/page-header/page-header-bg-30.jpg); background-position: 50% 30%;">
                      
+						<div class="page-header-image parallax fade-out-scroll-6 bg-image" style="background-image: url(assets/img/page-header/page-header-bg-30.jpg); background-position: 50% 30%;">
+							<a href="#shop-list-section" class="scroll-down sm-scroll hide-from-sm" title="Scroll down"></a>
 						<!-- Begin page header caption -->
-						<div class="page-header-caption">
-                            <h1 class="page-header-title">Jewerlies & Accesories </h1>
-							<h1 class="page-header-title"> </h1>
-							<div class="page-header-sub-title-wrap">
-								<div class="margin-top-20">
-									
-								</div>
-							</div>
-						</div>
+	<!-- Begin page header caption -->
+	<div class="page-header-caption">
+		<h1>Welcome To Our Shop!</h1>
+	</div>
+	
+	<style>
+		/* General styling for the page header caption */
+		.page-header-caption {
+		   
+			padding: 50px 20px;         /* Padding around the text */
+			text-align: center;         /* Center the content */
+		 
+			margin-bottom: 30px;        /* Space below the header */
+			opacity: 0;                 /* Initially hidden */
+			animation: fadeIn 3s forwards; /* Animation for fade-in effect */
+		}
+	
+		/* Styling for the h1 heading */
+		.page-header-caption h1 {
+			font-size: 3rem;            /* Large text size */
+			color: #ffffff;                /* Dark gray text color */
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+			text-transform: uppercase;  /* Uppercase text */
+			letter-spacing: 2px;        /* Spacing between letters */
+			margin: 0;                  /* Remove default margin */
+			padding: 0;                 /* Remove default padding */
+		}
+	
+		/* Keyframes for the fade-in animation */
+		@keyframes fadeIn {
+			0% {
+				opacity: 0;             /* Start with the text hidden */
+				transform: translateY(-30px); /* Start slightly above */
+			}
+			100% {
+				opacity: 1;             /* End with the text fully visible */
+				transform: translateY(0); /* Move to its normal position */
+			}
+		}
+	</style>
 						<!-- End page header caption -->
 
 						<!-- Begin scroll down button -->

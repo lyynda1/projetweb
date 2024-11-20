@@ -1,0 +1,75 @@
+/* General Layout */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f3f4f6;
+    font-family: Arial, sans-serif;
+}
+
+/* Success Box */
+.success-box {
+    text-align: center;
+    background: #ffffff;
+    padding: 10px;
+    border: 2px solid #4CAF50;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.success-header {
+    color: #4CAF50;
+    font-size: 24px;
+}
+
+.success-message {
+    font-size: 16px;
+    color: #333;
+}
+
+.link {
+    text-decoration: none;
+    color: #3FCG40;
+    font-weight: bold;
+}
+
+/* Error Box */
+.error-box {
+    text-align: center;
+    background: #ffffff;
+    padding: 20px;
+    border: 2px solid #f44336;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.error-header {
+    color: #f44336;
+}
+
+.error-message {
+    font-size: 18px;
+    color: #333;
+}
+
+/* Product Table */
+.product-header {
+    color: #333;
+}
+
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.table-header {
+    background-color: #f2f2f2;
+}
+
+.product-table th, .product-table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+}

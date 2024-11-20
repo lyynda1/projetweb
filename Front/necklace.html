@@ -84,7 +84,7 @@
 			<!-- Begin logo
 			================ -->
 			<div id="logo">
-				<a href="index.html"><img src="assets/img/logo-dark.png" title="Home" alt="logo"></a>
+				<a href="index.html"><img src="assets/img/logo-light.png" title="Home" alt="logo"></a>
 			</div>
 			<!-- End logo -->
 
@@ -107,17 +107,22 @@
 						<!-- Begin menu nav -->
 						<div class="menu-nav">
 							<ul class="menu-list">
+								
 							
+							
+								
+								
 								<li class="has-children active">
 									<a href="#0" class="sub-menu-trigger">Shop</a> 
 									<ul class="sub-menu">
-										<li><a href="shop-list.html">Shop List</a></li>
-                                        <li><a href="next1.html">Jewerly and Accesories </a></li>
+										<li><a href="shop-list.html">Clothes</a></li>
+										<li><a href="next1.html">Jewerly and accesories</a></li>
 										
 										<li><a href="shop-cart.html">Shoping Cart</a></li>
 										<li><a href="shop-checkout.html">Checkout</a></li>
 									</ul>
 								</li>
+								
 								
 							</ul>
 						</div>
@@ -160,120 +165,164 @@
 				<!-- End menu content -->
 
 			</nav>
-			<!-- End menu -->
+		
+		<!-- ===================
+		///// Begin header /////
+		==================== -->
+		<div id="header-attriputes">
+			<ul>
+				<li>
+					<!-- Begin menu trigger -->
+					<div id="menu-trigger">
+						<div class="mt-inner">
+							<div class="menu-str">
+								<span class="str-1"></span>
+								<span class="str-2"></span>
+								<span class="str-3"></span>
+							</div>
+						</div>
+						<div class="mt-text">Menu</div>
+					</div>
+					<!-- End menu trigger -->
+				</li>
+
+				<li>
+					<!-- Begin shop filter trigger -->
+					<div id="shop-filter-trigger">
+						<a href="#0" class="sft-icon" title="Product Filter" data-toggle="modal" data-target="#modal-66511298">
+							<i class="fas fa-search"></i>
+						</a>
+					</div>
+					<!-- End shop filter trigger -->
+				</li>
+			</ul> 
+
+			<ul>
+				
+				
+			</ul>
+		</div>
+		<!-- End header attriputes -->
+
+	</div>
+	<!-- End header -->
+
+
+	<!-- =========================
+	///// Begin shop filter  /////
+	========================== -->
+	<div id="shop-filter" class="s-filter">
+
+		<!-- Begin shop filter header -->
+		<div class="shop-filter-header">
+			<a href="#" class="shop-filter-close">×</a>
+			<h4 class="shop-filter-title">Product Filter</h4>
+		</div>
+		<!-- End shop filter header -->
+
+		<!-- Begin shop filter inner -->
+		<div class="shop-filter-inner">
+			<div class="shop-filter-box">
+				
+				<!-- Begin product search form -->
+				<form id="product-search-form" method="get" action="https://demo.themetorium.net/html/waldo/search-results-2.html">
+					<div class="form-group form-btn-inside">
+						<input type="text" class="form-control" id="product-search-input" name="search" placeholder="Search...">
+						<button type="submit"><i class="fas fa-search"></i></button>
+					</div>
+				</form>
+				<!-- End product search form -->
+				
+			</div> <!-- /.shop-filter-box -->
 
 			
-			<!-- ==============================
-			///// Begin header attriputes /////
-			=============================== -->
-			<div id="header-attriputes">
-				<ul>
-					<li>
-						<!-- Begin menu trigger -->
-						<div id="menu-trigger">
-							<div class="mt-inner">
-								<div class="menu-str">
-									<span class="str-1"></span>
-									<span class="str-2"></span>
-									<span class="str-3"></span>
-								</div>
-							</div>
-							<div class="mt-text">Menu</div>
-						</div>
-						<!-- End menu trigger -->
-					</li>
+			<!-- Begin shop filter form -->
+			<form id="shop-filter-form">
 
-					<li>
-						<!-- Begin global search trigger -->
-						<div id="global-search-trigger">
-							<a href="#0" class="gst-icon" title="Search...">
-								<i class="fas fa-search"></i>
-							</a>
-						</div>
-						<!-- End global search trigger -->
-					</li>
-				</ul> 
+			
+			
+					<!-- End price range slider -->
+					
+				<!-- /.shop-filter-box -->
 
-				<ul>
-					<li>
-						<!-- Begin shopping cart trigger  -->
-						<div id="shopping-cart-trigger">
-							<a href="#0" class="cart-icon" title="Shopping Cart" data-toggle="modal" data-target="#modal-38875649">
-								<i class="fas fa-shopping-bag"></i>
-								<span class="cart-num">2</span>
-							</a>
-						</div>
-						<!-- End shopping cart trigger -->
+				<div class="shop-filter-box">
+					<h4 class="sfb-heading">Filter By Price</h4>
 
-						<!-- Begin modal (for shopping cart) -->
-						<div id="modal-38875649" class="modal modal-center fade" tabindex="-1" role="dialog" aria-hidden="false">
-							<div class="modal-dialog max-width-500">
-								<div class="modal-content">
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-										<h4 class="modal-title">2 items in your cart</h4>
-									</div>
-									<div class="modal-body">
+					<!-- Begin filter by price -->
+					<div class="radio-button-styled">
+						<label>
+							<input type="radio" name="price" id="check-77833492" value="0-20" class="price-filter">
+							<span class="box"></span> 0DT-20DT
+						</label>
+						<label>
+							<input type="radio" name="price" id="check-2983423" value="20-30" class="price-filter">
+							<span class="box"></span> 20-30DT
+						</label>
+						<label>
+							<input type="radio" name="price" id="check-18987234" value="30-50" class="price-filter">
+							<span class="box"></span> 30-50DT
+						</label>
+						<label>
+							<input type="radio" name="price" value="50-100" class="price-filter">
+							<span class="box"></span> 50DT - 100DT
+						  </label>
+						
+					</div>
+					<!-- End filter by price -->
+					
+				</div> <!-- /.shop-filter-box -->
 
-										<!-- Begin shopping cart content -->
-										<div class="cart-content">
-											<ul class="cart-product-list">
-												<li>
-													<!-- Begin shopping cart product -->
-													<div class="cart-product">
-														<a href="shop-single.html" class="cart-pr-thumb bg-image" style="background-image: url(assets/img/shop/shop-7.jpg); background-position: 50% 50%;"></a>
-														<div class="cart-pr-info">
-															<a href="shop-single.html" class="cart-pr-title">Malia </a>
-															<div class="cart-pr-price">Price: <span>200.000DT</span></div>
-															<div class="cart-pr-quantity">Quantity: <span>1</span></div>
-														</div>
-														<a href="#0" class="cart-pr-remove" title="Remove from cart">×</a>
-													</div>
-													<!-- End shopping cart product -->
-												</li>
+				<div class="shop-filter-box">
+					<h4 class="sfb-heading">Filter By Color</h4>
 
-												<li>
-													<!-- Begin shopping cart product -->
-													<div class="cart-product">
-														<a href="shop-single.html" class="cart-pr-thumb bg-image" style="background-image: url(assets/img/shop/shop-2.jpg); background-position: 50% 50%;"></a>
-														<div class="cart-pr-info">
-															<a href="shop-single.html" class="cart-pr-title">Sefsari</a>
-															<div class="cart-pr-price">Price: <span>150.000DT</span></div>
-															<div class="cart-pr-quantity">Quantity: <span>1</span></div>
-														</div>
-														<a href="#0" class="cart-pr-remove" title="Remove from cart">×</a>
-													</div>
-													<!-- End shopping cart product -->
-												</li>
-											</ul>
-										</div>
-										<!-- End shopping cart content -->
+					<!-- Begin filter by color -->
+					<div class="checkbox-styled">
+						<label>
+							<input type="checkbox" name="check-93456936" id="red" value="red " class="color-filter">
+							<span class="box"> </span> Red
+						</label>
+						<label>
+							<input type="checkbox" name="check-93456936" id="blue" value="blue" class="color-filter">
+							<span class="box"></span> Blue 
+						</label>
+						<label>
+							<input type="checkbox" name="check-93456936" id="black" value="black" class="color-filter">
+							<span class="box"></span> Black
+						</label>
+						<label>
+							<input type="checkbox" name="check-93456936" id="bronze" value="bronze class="color-filter">
+							<span class="box"></span> Bronze
+						</label>
+						<label>
+							<input type="checkbox" name="check-93456936" id="silver" value="silver" class="color-filter">
+							<span class="box"></span> Silver
+						</label>
+						<label>
+							<input type="checkbox" name="check-93456936" id="silver" value="gold" class="color-filter">
+							<span class="box"></span> Gold
+						</label>
+					</div>
+					<!-- End filter by color -->
+					
+				</div> <!-- /.shop-filter-box -->
 
-									</div>
-									<div class="modal-footer padding-vertical-0">
-										<div class="cart-total">
-											<strong>Subtotal:</strong> <span>$1,310.00</span>
-										</div>
-										<div class="row">
-											<div class="col-xs-6 no-padding">
-												<a href="shop-cart.html" class="btn btn-dark btn-block btn-lg no-margin">View Cart</a>
-											</div> <!-- /.col -->
+			
+			 <!-- /.shop-filter-box -->
 
-											<div class="col-xs-6 no-padding">
-												<a href="shop-checkout.html" class="btn btn-primary btn-block btn-lg no-margin">Checkout</a>
-											</div> <!-- /.col -->
-										</div> <!-- /.row -->
-									</div>
-								</div> <!-- /.modal-content -->
-							</div> <!-- /.modal-dialog -->
-						</div>
-						<!-- End modal -->
-					</li>
-				</ul>
-			</div>
-			<!-- End header attriputes -->
+				<!-- Begin shop filter buttons -->
+				<div class="shop-filter-buttons">
+					<button type="button" onclick="filterProducts()" id="shop-filter-submit" class="btn btn-primary btn-block btn-sm margin-top-10">Filter</button>
+				</div>
+				
+				<!-- End shop filter buttons -->
+
+			</form>
+			<!-- End shop filter form -->
 
 		</div>
+		<!-- End shop filter inner -->
+
+	</div>
 		<!-- End header -->
 
 
@@ -366,6 +415,19 @@
                       font-weight: bold;
                       margin-top: 10px;
                     }
+					.out-of-stock {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+}
+.product-quantity {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
                     
                   </style>
                 </head>
@@ -373,24 +435,34 @@
                 
                 <div class="product-container">
                   <!-- Product 1 -->
-                  <div class="product-card">
+                  <div class="product-card" data-price="21" data-color="silver" data-category="necklaces">
                     <img src="assets/img/shop/COLLIER11.png" alt="Product 1 Image">
+					<div class="product-quantity" title="Quantity">
+						<div class="dec qtybutton">-</div>
+						<input type="text" value="1" class="cart-plus-minus-box">
+						<div class="inc qtybutton">+</div>
+					</div>
                     <div class="product-name">Khomsa Necklace</div>
                     <div class="product-price">21.00DT</div>
                     <div class="product-buttons">
-                        <button type="submit" class="btn btn-dark"><i class="fas fa-shopping-bag"></i> Add To Cart</button>
+						<button type="button" class="btn btn-dark add-to-cart"><i class="fas fa-shopping-bag"></i> Add To Cart</button>
                         <a href="#" class="btn btn-primary" title="Add to wishlist"><i class="fas fa-heart"></i></a>
                        
                     </div>
                   </div>
                 
                   <!-- Product 2 (Out of stock example) -->
-                  <div class="product-card" >
+                  <div class="product-card" data-price="17" data-color="silver" data-category="necklaces">
                     <img src="assets/img/shop/COLLIER22.png" alt="Product 2 Image">
+					<div class="product-quantity" title="Quantity">
+						<div class="dec qtybutton">-</div>
+						<input type="text" value="1" class="cart-plus-minus-box">
+						<div class="inc qtybutton">+</div>
+					</div>
                     <div class="product-name">Khlel Necklace</div>
                     <div class="product-price">17.00DT</div>
                     <div class="product-buttons">
-                        <button type="submit" class="btn btn-dark"><i class="fas fa-shopping-bag"></i> Add To Cart</button>
+                        <button type="button" class="btn btn-dark add-to-cart"><i class="fas fa-shopping-bag"></i> Add To Cart</button>
                         <a href="#" class="btn btn-primary" title="Add to wishlist"><i class="fas fa-heart"></i></a>
                        
                     </div>
@@ -398,12 +470,17 @@
                   </div>
                 
                   <!-- Product 3 -->
-                  <div class="product-card">
+                  <div class="product-card" data-price="23" data-color="silver" data-category="necklaces">
                     <img src="assets/img/shop/COLLIER33.png"  alt="Product 3 Image">
+					<div class="product-quantity" title="Quantity">
+						<div class="dec qtybutton">-</div>
+						<input type="text" value="1" class="cart-plus-minus-box">
+						<div class="inc qtybutton">+</div>
+					</div>
                     <div class="product-name">Mahboub Necklace</div>
                     <div class="product-price">23.00DT </div>
                     <div class="product-buttons">
-                        <button type="submit" class="btn btn-dark"><i class="fas fa-shopping-bag"></i style="margin-left=90px"> Add To Cart</button>
+						<button type="button" class="btn btn-dark add-to-cart"><i class="fas fa-shopping-bag"></i> Add To Cart</button>
                         <a href="#" class="btn btn-primary" title="Add to wishlist"><i class="fas fa-heart"></i></a>
                         
                     </div>
@@ -945,8 +1022,8 @@
 
 		<!-- Theme master JS -->
 		<script src="assets/js/theme.js"></script>
-
-
+		<script src="assets/js/AddRemoveChart.js"></script>
+<script src="assets/js/filtering.js"></script>
 
 		<!--==============================
 		///// Begin Google Analytics /////
@@ -970,7 +1047,7 @@
 		///// End Google Analytics /////
 		============================== -->
 
-
+		
 
 	</body>
 

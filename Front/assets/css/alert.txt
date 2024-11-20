@@ -1,0 +1,28 @@
+/* notifications.css */
+
+/* Custom Alert Styles */
+.custom-alert {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #28a745;  /* Green color for success */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+/* Add a class to fade out the alert */
+.custom-alert.hide {
+    opacity: 0;
+}
+
+/* Optional: Add error style for out-of-stock alerts */
+.custom-alert-error {
+    background-color: #dc3545;  /* Red color for errors */
+}

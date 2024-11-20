@@ -197,79 +197,7 @@
 				</ul> 
 
 				<ul>
-					<li>
-						<!-- Begin shopping cart trigger  -->
-						<div id="shopping-cart-trigger">
-							<a href="#0" class="cart-icon" title="Shopping Cart" data-toggle="modal" data-target="#modal-38875649">
-								<i class="fas fa-shopping-bag"></i>
-								<span class="cart-num">2</span>
-							</a>
-						</div>
-						<!-- End shopping cart trigger -->
-
-						<!-- Begin modal (for shopping cart) -->
-						<div id="modal-38875649" class="modal modal-center fade" tabindex="-1" role="dialog" aria-hidden="false">
-							<div class="modal-dialog max-width-500">
-								<div class="modal-content">
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-										<h4 class="modal-title">2 items in your cart</h4>
-									</div>
-									<div class="modal-body">
-
-										<!-- Begin shopping cart content -->
-										<div class="cart-content">
-											<ul class="cart-product-list">
-												<li>
-													<!-- Begin shopping cart product -->
-													<div class="cart-product">
-														<a href="shop-single.html" class="cart-pr-thumb bg-image" style="background-image: url(assets/img/shop/shop-7.jpg); background-position: 50% 50%;"></a>
-														<div class="cart-pr-info">
-															<a href="shop-single.html" class="cart-pr-title">Armchair "Yh"</a>
-															<div class="cart-pr-price">Price: <span>$920.00</span></div>
-															<div class="cart-pr-quantity">Cuantity: <span>1</span></div>
-														</div>
-														<a href="#0" class="cart-pr-remove" title="Remove from cart">×</a>
-													</div>
-													<!-- End shopping cart product -->
-												</li>
-
-												<li>
-													<!-- Begin shopping cart product -->
-													<div class="cart-product">
-														<a href="shop-single.html" class="cart-pr-thumb bg-image" style="background-image: url(assets/img/shop/shop-2.jpg); background-position: 50% 50%;"></a>
-														<div class="cart-pr-info">
-															<a href="shop-single.html" class="cart-pr-title">Exocet Chair</a>
-															<div class="cart-pr-price">Price: <span>$390.00</span></div>
-															<div class="cart-pr-quantity">Cuantity: <span>1</span></div>
-														</div>
-														<a href="#0" class="cart-pr-remove" title="Remove from cart">×</a>
-													</div>
-													<!-- End shopping cart product -->
-												</li>
-											</ul>
-										</div>
-										<!-- End shopping cart content -->
-
-									</div>
-									<div class="modal-footer padding-vertical-0">
-										<div class="cart-total">
-											<strong>Subtotal:</strong> <span>$1,310.00</span>
-										</div>
-										<div class="row">
-											<div class="col-xs-6 no-padding">
-												<a href="shop-cart.html" class="btn btn-dark btn-block btn-lg no-margin">View Cart</a>
-											</div> <!-- /.col -->
-
-											<div class="col-xs-6 no-padding">
-												<a href="shop-checkout.html" class="btn btn-primary btn-block btn-lg no-margin">Checkout</a>
-											</div> <!-- /.col -->
-										</div> <!-- /.row -->
-									</div>
-								</div> <!-- /.modal-content -->
-							</div> <!-- /.modal-dialog -->
-						</div>
-						<!-- End modal -->
+					
 					</li>
 				</ul>
 			</div>
@@ -389,63 +317,56 @@
                 
                 <div class="product-container">
                   <!-- Product 1 -->
-                  <div class="product-card">
-                    <img src="assets/img/shop/VASE1.png" alt="Product 1 Image">
-                    <div class="product-name">Traditional Urn</div>
+                  <div class="product-card" data-price="41" data-color="bronze" data-category="vases">
+                    <img src="assets/img/shop/vase6.png" alt="Product 1 Image">
+					<div class="product-quantity" title="Quantity">
+						<div class="dec qtybutton">-</div>
+						<input type="text" value="1" class="cart-plus-minus-box">
+						<div class="inc qtybutton">+</div>
+					</div>
+                    <div class="product-name">Flower Urn</div>
                     <div class="product-price">41.00DT</div>
-                    <div class="product-dimensions">
-                        <label for="dimensions">Choose Dimension:</label>
-                        <select id="dimensions" name="dimensions">
-                            <option value="90cm">50cm/25cm</option>
-                            <option value="120cm">60cm/30cm</option>
-                        </select>
-                    </div>
+                  
                     <div class="product-buttons">
-                        <button type="submit" class="btn btn-dark"><i class="fas fa-shopping-bag"></i> Add To Cart</button>
+						<button type="button" class="btn btn-dark add-to-cart"><i class="fas fa-shopping-bag"></i> Add To Cart</button>
                         <a href="#" class="btn btn-primary" title="Add to wishlist"><i class="fas fa-heart"></i></a>
                        
                     </div>
                   </div>
                 
                   <!-- Product 2 (Out of stock example) -->
-                  <div class="product-card" >
-                    <img src="assets/img/shop/vase 2.png" alt="Product 2 Image">
-                    <div class="product-name">Mahbes Nabel</div>
+                  <div class="product-card" data-price="22" data-color="" data-category="vases">
+                    <img src="assets/img/shop/vase5.png" alt="Product 2 Image">
+					<p></p> <br>
+					<div class="product-quantity" title="Quantity">
+						<div class="dec qtybutton">-</div>
+						<input type="text" value="1" class="cart-plus-minus-box">
+						<div class="inc qtybutton">+</div>
+					</div>
+                    <div class="product-name">Roses Urn</div>
                     <div class="product-price">22.00DT</div>
-                    <div class="product-dimensions">
-                        <label for="dimensions">Choose Dimension:</label>
-                        <select id="dimensions" name="dimensions">
-                            <option value="90cm">50cm/25cm</option>
-                            <option value="120cm">60cm/30cm</option>
-                        </select>
-                    </div>
+                  
                     <div class="product-buttons">
-                        <button type="submit" class="btn btn-dark"><i class="fas fa-shopping-bag"></i> Add To Cart</button>
+						<button type="button" class="btn btn-dark add-to-cart"><i class="fas fa-shopping-bag"></i> Add To Cart</button>
                         <a href="#" class="btn btn-primary" title="Add to wishlist"><i class="fas fa-heart"></i></a>
                        
                     </div>
-                    <div class="out-of-stock">Out Of Stock</div>
+                   
                   </div>
-                
+                <style>
+					.product-quantity {
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    margin: 10px 0; /* Adjust margin for spacing */
+}
+.social-buttons {
+    margin-left: 600px; /* Adjust the value to move it further to the left */
+}
+
+				</style>
                   <!-- Product 3 -->
-                  <div class="product-card">
-                    <img src="assets/img/shop/vase 3.png"  alt="Product 3 Image">
-                    <div class="product-name">Zin Urn</div>
-                    <div class="product-price">15.00DT </div>
-                     <!-- Dimension selection dropdown -->
-                     <div class="product-dimensions">
-                        <label for="dimensions">Choose Dimension:</label>
-                        <select id="dimensions" name="dimensions">
-                            <option value="90cm">50cm/25cm</option>
-                            <option value="120cm">60cm/30cm</option>
-                        </select>
-                    </div>
-                    <div class="product-buttons">
-                        <button type="submit" class="btn btn-dark"><i class="fas fa-shopping-bag"></i style="margin-left=90px"> Add To Cart</button>
-                        <a href="#" class="btn btn-primary" title="Add to wishlist"><i class="fas fa-heart"></i></a>
-                        
-                    </div>
-                  </div>
+                
                 </div>
                 
                 </body>
@@ -457,10 +378,7 @@
 
 										</form>
 									</div>
-									
-
-									<!-- Begin social buttons -->
-									<div class="social-buttons margin-top-40">
+									<div class="social-buttons margin-top-90 margin-left 70">
 										<ul>
 											<li><strong>Share: </strong></li>
 											<li><a href="#0" class="btn btn-social-min btn-default btn-rounded-full" title="Share on facebook"><i class="fab fa-facebook-f"></i></a></li>
@@ -470,6 +388,9 @@
 											<li><a href="#0" class="btn btn-social-min btn-default btn-rounded-full" title="Email to a friend"><i class="fas fa-envelope"></i></a></li>
 										</ul>
 									</div>
+
+									<!-- Begin social buttons -->
+									
 									<!-- End social buttons -->
 
 								</div>
@@ -555,7 +476,7 @@ These traditional Tunisian vases are crafted with intricate designs and vibrant 
 												<!-- Begin product reviews 
 												=========================== -->
 												<div class="product-reviews">
-													<h2 class="product-reviews-heading">3 reviews for <span>"Tote bags"</span>:</h2>
+													<h2 class="product-reviews-heading">3 reviews for <span>"Vases"</span>:</h2>
 
 													<!-- Begin product single review -->
 													<div class="product-single-review">
@@ -768,16 +689,12 @@ These traditional Tunisian vases are crafted with intricate designs and vibrant 
 						<div class="shop-list-item padding-height-75 bg-image" style="background-image: url(assets/img/shop/shop-1.jpg); background-position: 50% 50%">
 							<div class="sli-hover">
 								<div class="sli-meta">
-									<a href="shop-single.html" class="sli-link">
+									<a href="chechia.html" class="sli-link">
 										<h2 class="sli-title">Chechia</h2>
-										<p class="sli-category"></p>
-										<div class="sli-price">20.00DT</div>
+									
 									</a>
 								</div>
-								<div class="sli-buttons">
-									<a href="shop-single.html" class="sli-btn sli-btn-details">View Details</a>
-									<a href="#" class="sli-btn sli-btn-cart"><i class="fas fa-shopping-bag"></i> Add To Cart</a>
-								</div>
+							
 							</div>
 						</div>
 						<!-- End shop list item -->
@@ -786,16 +703,13 @@ These traditional Tunisian vases are crafted with intricate designs and vibrant 
 						<div class="shop-list-item padding-height-75 bg-image" style="background-image: url(assets/img/shop/shop-3.jpg); background-position: 50% 50%">
 							<div class="sli-hover">
 								<div class="sli-meta">
-									<a href="shop-single.html" class="sli-link">
+									<a href="jebba.html" class="sli-link">
 										<h2 class="sli-title">Jebba</h2>
-										<p class="sli-category"></p>
-										<div class="sli-price">29.00DT</div>
+										
+										
 									</a>
 								</div>
-								<div class="sli-buttons">
-									<a href="shop-single.html" class="sli-btn sli-btn-details">View Details</a>
-									<a href="#" class="sli-btn sli-btn-cart"><i class="fas fa-shopping-bag"></i> Add To Cart</a>
-								</div>
+								
 							</div>
 						</div>
 						<!-- End shop list item -->
@@ -804,16 +718,12 @@ These traditional Tunisian vases are crafted with intricate designs and vibrant 
 						<div class="shop-list-item padding-height-75 bg-image" style="background-image: url(assets/img/shop/shop-4.jpg); background-position: 50% 50%">
 							<div class="sli-hover">
 								<div class="sli-meta">
-									<a href="shop-single.html" class="sli-link">
-										<h2 class="sli-title">Kachabiya</h2>
-										<p class="sli-category"></p>
-										<div class="sli-price">120.00DT</div>
+									<a href="kachabiya.html" class="sli-link">
+										<h2 class="sli-title">Bornous</h2>
+										
 									</a>
 								</div>
-								<div class="sli-buttons">
-									<a href="shop-single.html" class="sli-btn sli-btn-details">View Details</a>
-									<a href="#" class="sli-btn sli-btn-cart"><i class="fas fa-shopping-bag"></i> Add To Cart</a>
-								</div>
+								
 							</div>
 						</div>
 						<!-- End shop list item -->
@@ -822,19 +732,13 @@ These traditional Tunisian vases are crafted with intricate designs and vibrant 
 						<div class="shop-list-item padding-height-75 bg-image" style="background-image: url(assets/img/shop/shop-5.jpg); background-position: 50% 50%">
 							<div class="sli-hover">
 								<div class="sli-meta">
-									<a href="shop-single.html" class="sli-link">
+									<a href="caftan.html" class="sli-link">
 										<h2 class="sli-title">Caftan</h2>
-										<p class="sli-category">Dress</p>
-										<div class="sli-price">
-											<span class="sli-price-old">500.000DT</span> 
-											<span class="sli-price-new">420.000DT</span>
-										</div>
+										
+										
 									</a>
 								</div>
-								<div class="sli-buttons">
-									<a href="shop-single.html" class="sli-btn sli-btn-details">View Details</a>
-									<a href="#" class="sli-btn sli-btn-cart"><i class="fas fa-shopping-bag"></i> Add To Cart</a>
-								</div>
+							
 								<div class="sli-sale-padge">Sale!</div>
 							</div>
 						</div>
@@ -844,19 +748,13 @@ These traditional Tunisian vases are crafted with intricate designs and vibrant 
 						<div class="shop-list-item padding-height-75 bg-image" style="background-image: url(assets/img/shop/shop-6.jpg); background-position: 50% 50%">
 							<div class="sli-hover">
 								<div class="sli-meta">
-									<a href="shop-single.html" class="sli-link">
+									<a href="kamis.html" class="sli-link">
 										<h2 class="sli-title">Kamis</h2>
 										<p class="sli-category"></p>
-										<div class="sli-price">
-											<span class="sli-price-old">400.000DT</span> 
-											<span class="sli-price-new">320.000DT</span>
-										</div>
+										
 									</a>
 								</div>
-								<div class="sli-buttons">
-									<a href="shop-single.html" class="sli-btn sli-btn-details">View Details</a>
-									<a href="#" class="sli-btn sli-btn-cart"><i class="fas fa-shopping-bag"></i> Add To Cart</a>
-								</div>
+								
 								<div class="sli-sale-padge">Sale!</div>
 							</div>
 						</div>
@@ -1001,7 +899,7 @@ These traditional Tunisian vases are crafted with intricate designs and vibrant 
 		<!-- Theme master JS -->
 		<script src="assets/js/theme.js"></script>
 
-
+		<script src="assets/js/AddRemoveChart.js"></script>
 
 		<!--==============================
 		///// Begin Google Analytics /////
