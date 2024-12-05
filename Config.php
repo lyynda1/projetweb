@@ -16,6 +16,5 @@ class config{
         return self::$pdo;
     }
 }
-//require nestaamlouha wakteli obligatoire n3aytou lel fich adheka
-//il faut avoir deuw (classes ) car on a deux entités
+//rEQUIRE
 ?>
