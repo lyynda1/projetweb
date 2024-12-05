@@ -27,7 +27,7 @@
                 
             );
             $PanierC->AjouterPanier($Panier);
-            header('Location: AfficherPaniers.php'); 
+            header('Location: AfficherPaniers.php'); // ta"3ML REDIRECTION 
            }
     }
 
