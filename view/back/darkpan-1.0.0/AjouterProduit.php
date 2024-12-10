@@ -220,78 +220,133 @@
 
             <!-- Form Start -->
             <div class="container-fluid pt-4 px-4">
-                <div class="row g-4">
-                    <div class="col-sm-12 col-xl-7">
-                        <div class="bg-secondary rounded h-100 p-4">
-                            <center><h4 class="mb-4">Ajouter Produit</h4></center>
-                            <form method="POST" class="forms-sample" name="form"  id="form" enctype="multipart/form-data" >
-
-
-
-                                <div class="mb-3">
-                                    <label for="nomProduit" class="form-label">Nom Produit</label>
-                                    <input type="text" class="form-control" id="nomProduit" name="nomProduit" placeholder="Entrez le nom du produit">
-                                    <div id="emailHelp" class="form-text">
-                                    <div id="nomPerror" class="error-message"></div>
-                                    </div>
-                                </div>
-
-                                
-                                <div class="mb-3">
-                                    <label for="Image" class="form-label">Image</label>
-                                    <input type="file" class="form-control" id="image" name="image">
-                                    <div id="imgerror" class="error-message"></div>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="Description" class="form-label">Description</label>
-                                    <input type="text" class="form-control" id="description" name="description" placeholder="Entrez le Description">
-                                    <div id="descerror" class="error-message"></div>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="prix" class="form-label">Prix</label>
-                                    <input type="number" class="form-control" id="prix" name="prix" placeholder="Entrez le prix">
-                                    <div id="prixerror" class="error-message"></div>
-                                </div>
-
-
-                                <div class="mb-3">
-                                    <label for="categorie" class="form-label">Categorie</label>
-                                    <select class="form-select"name="categorie">
-                                                <?php
-                                                    		function AfficherCategorie(){
-                                                                $sql="SELECT * FROM Categorie";
-                                                                $db = config::getConnexion();
-                                                                try{
-                                                                    $liste = $db->query($sql);
-                                                                    return $liste;
-                                                                }
-                                                                catch(Exception $e){
-                                                                    die('Erreur:'. $e->getMessage());
-                                                                }
-                                                            }
-                                                            $ListCategories = $CategorieC->AfficherCategorie();
-                                                            foreach($ListCategories as $Category){
-                                                        ?>
-
-                                                <option value="<?php echo $Category['idC']; ?>"><?php echo $Category['nomC']; ?></option>
-                                                <?php }
-                                                ?>
-                                            </select>
-                                </div>
-
-
-
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                                <a href="AfficherProduits.php" class="btn btn-light">Cancel</a>
-                            </form>
+    <div class="row g-4">
+        <div class="col-sm-12 col-xl-7">
+            <div class="bg-secondary rounded h-100 p-4">
+                <center><h4 class="mb-4">Ajouter Produit</h4></center>
+                <form method="POST" class="forms-sample" name="form" id="form" enctype="multipart/form-data" onsubmit="return validateForm()">
+                    <div class="mb-3">
+                        <label for="nomProduit" class="form-label">Nom Produit</label>
+                        <input type="text" class="form-control" id="nomProduit" name="nomProduit" placeholder="Entrez le nom du produit">
+                        <div id="emailHelp" class="form-text">
+                            <div id="nomPerror" class="error-message"></div>
                         </div>
                     </div>
-                </div>
+
+                    <div class="mb-3">
+                        <label for="Image" class="form-label">Image</label>
+                        <input type="file" class="form-control" id="image" name="image">
+                        <div id="imgerror" class="error-message"></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="Description" class="form-label">Description</label>
+                        <input type="text" class="form-control" id="description" name="description" placeholder="Entrez le Description">
+                        <div id="descerror" class="error-message"></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="prix" class="form-label">Prix</label>
+                        <input type="number" class="form-control" id="prix" name="prix" placeholder="Entrez le prix">
+                        <div id="prixerror" class="error-message"></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="categorie" class="form-label">Categorie</label>
+                        <select class="form-select" name="categorie">
+                            <?php
+                            function AfficherCategorie(){
+                                $sql="SELECT * FROM Categorie";
+                                $db = config::getConnexion();
+                                try{
+                                    $liste = $db->query($sql);
+                                    return $liste;
+                                }
+                                catch(Exception $e){
+                                    die('Erreur:'. $e->getMessage());
+                                }
+                            }
+                            $ListCategories = $CategorieC->AfficherCategorie();
+                            foreach($ListCategories as $Category){
+                            ?>
+                                <option value="<?php echo $Category['idC']; ?>"><?php echo $Category['nomC']; ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <a href="AfficherProduits.php" class="btn btn-light">Cancel</a>
+                </form>
             </div>
-        
         </div>
+    </div>
+</div>
+<script>
+    function validateForm() {
+    console.log("validateForm called");
+
+    var nom_produit = document.getElementById("nomProduit").value;
+    var description = document.getElementById("description").value;
+    var prix = document.getElementById("prix").value;
+    var image = document.getElementById("image").value;
+
+    var nomPerror = document.getElementById("nomPerror");
+    var descerror = document.getElementById("descerror");
+    var prixerror = document.getElementById("prixerror");
+    var imgerror = document.getElementById("imgerror");
+
+    var isValid = true;
+
+    // Nom Produit Validation
+    if (nom_produit.trim() === "") {
+        nomPerror.innerHTML = "Nom produit est requis";
+        isValid = false;
+    } else if (!/[A-Z]/.test(nom_produit)) {
+        nomPerror.innerHTML = "Le produit doit contenir une lettre majuscule";
+        isValid = false;
+    } else if (nom_produit.length < 5) {
+        nomPerror.innerHTML = "Le produit doit contenir au moins 5 caractères";
+        isValid = false;
+    } else {
+        nomPerror.innerHTML = "";
+    }
+
+    // Description Validation
+    if (description.length < 4) {
+        descerror.innerHTML = "La description doit contenir au moins 4 caractères";
+        isValid = false;
+    } else if (description.trim() === "") {
+        descerror.innerHTML = "Description est requis";
+        isValid = false;
+    } else {
+        descerror.innerHTML = "";
+    }
+
+    // Prix Validation
+    if (prix.trim() === "") {
+        prixerror.innerHTML = "Le Prix est requis";
+        isValid = false;
+    } else if (prix < 0) {
+        prixerror.innerHTML = "Le Prix doit être positif";
+        isValid = false;
+    } else {
+        prixerror.innerHTML = "";
+    }
+
+    // Image Validation (JPEG only)
+    var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.webp|\.gif|\.bmp|\.tiff)$/i;
+
+    if (!allowedExtensions.exec(image)) {
+        imgerror.innerHTML = "Veuillez sélectionner une image valide.";
+        isValid = false;
+    } else {
+        imgerror.innerHTML = "";
+    }
+
+    return isValid; // Return false to prevent form submission if validation fails
+}
+
+</script>
         <!-- Content End -->
 
 
@@ -312,7 +367,7 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-    <script src="js/Controle.js"></script>
+   
 </body>
 
 </html>

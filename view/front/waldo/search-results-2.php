@@ -6,6 +6,24 @@ if (isset($_GET['search'])) {
     $search_query = '';
 }
 
+include '../../../controller/ProduitC.php';
+include '../../../controller/CategorieC.php';
+require_once '../../../config.php';
+
+$ProduitC = new ProduitC();
+$CategorieC = new CategorieC();
+
+if (isset($_GET['cat'])) {
+    // Use the category ID to filter products
+    $listProduits = $ProduitC->RechercheCat($_GET['cat']);
+    $categoryFilter = $_GET['cat']; // Store the category filter
+} else {
+    $listProduits = $ProduitC->AfficherProduits();
+    $categoryFilter = null; // No category filter
+}
+
+$listCategories = $CategorieC->AfficherCategorie();
+
 // Example: You could use SQL to query the database for matching products or posts
 // Replace this with your actual database connection and query logic
 
@@ -21,7 +39,15 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
     // Search query to search the database for matching products or posts
-    $stmt = $pdo->prepare("SELECT * FROM produit WHERE nomProduit LIKE :search_query OR description LIKE :search_query");
+	$stmt = $pdo->prepare("
+    SELECT p.* 
+    FROM produit p
+    JOIN categorie c ON p.categorie = c.idC
+    WHERE p.nomProduit LIKE :search_query
+    OR p.description LIKE :search_query
+    OR c.nomC LIKE :search_query
+");
+
     $stmt->execute(['search_query' => "%$search_query%"]);
     
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);

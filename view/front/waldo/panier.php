@@ -431,7 +431,7 @@ $listCategories = $CategorieC->AfficherCategorie();
 																</a>
 															</td>
 															<td class="product-price">
-																<span class="amount"><?php echo $item['prix']; ?> €</span>
+																<span class="amount"><?php echo $item['prix']; ?> DT</span>
 															</td>
 															<td class="product-quantity hide-from-sm">
 																<div title="Quantity">
@@ -443,7 +443,7 @@ $listCategories = $CategorieC->AfficherCategorie();
 															</td>
 
 															<td class="product-subtotal">
-																<span class="amount"><strong><?php echo $item['prixTotal']; ?> €</strong></span>
+																<span class="amount"><strong><?php echo $item['prixTotal']; ?> DT</strong></span>
 															</td>
 															<td class="product-remove">
 																<a title="Remove this item" class="remove"

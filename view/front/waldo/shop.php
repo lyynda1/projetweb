@@ -1,22 +1,73 @@
 <?php
 include '../../../controller/ProduitC.php';
 include '../../../controller/CategorieC.php';
+require_once '../../../config.php';
 
 $ProduitC = new ProduitC();
 $CategorieC = new CategorieC();
 
-if(isset($_GET['cat']))
-{
-	$listProduits = $ProduitC->RechercheCat($_GET['cat']);
-}else 
-{
-	$listProduits = $ProduitC->AfficherProduits();
-
+if (isset($_GET['cat'])) {
+    // Use the category ID to filter products
+    $listProduits = $ProduitC->RechercheCat($_GET['cat']);
+    $categoryFilter = $_GET['cat']; // Store the category filter
+} else {
+    $listProduits = $ProduitC->AfficherProduits();
+    $categoryFilter = null; // No category filter
 }
 
 $listCategories = $CategorieC->AfficherCategorie();
 
+// Include the database connection
+$pdo = config::getConnexion();
+
+// Pagination settings
+$productsPerPage = 6; // Number of products per page
+
+// Building the total products query
+$totalProductsQuery = 'SELECT COUNT(idProduit) FROM produit';
+if ($categoryFilter) {
+    // Add filtering by category if a category is selected
+    $totalProductsQuery .= ' WHERE categorie = :cat';
+}
+
+// Prepare and execute the query for total product count
+$stmt = $pdo->prepare($totalProductsQuery);
+if ($categoryFilter) {
+    $stmt->bindValue(':cat', $categoryFilter, PDO::PARAM_INT); // Bind the category filter
+}
+$stmt->execute();
+$totalProducts = (int)$stmt->fetchColumn(); // Total product count
+
+// Calculate total pages
+$totalPages = ceil($totalProducts / $productsPerPage);
+$currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1; // Current page
+if ($currentPage < 1) $currentPage = 1;
+if ($currentPage > $totalPages) $currentPage = $totalPages;
+
+$offset = ($currentPage - 1) * $productsPerPage;
+
+// Fetch products for the current page
+$query = 'SELECT * FROM produit';
+if ($categoryFilter) {
+    // Add category filter to product query
+    $query .= ' WHERE categorie = :cat';
+}
+$query .= ' LIMIT :offset, :limit';
+
+// Prepare and execute the query for fetching products
+$stmt = $pdo->prepare($query);
+if ($categoryFilter) {
+    $stmt->bindValue(':cat', $categoryFilter, PDO::PARAM_INT); // Bind the category filter
+}
+$stmt->bindValue(':offset', $offset, PDO::PARAM_INT); // Bind the offset for pagination
+$stmt->bindValue(':limit', $productsPerPage, PDO::PARAM_INT); // Bind the limit for pagination
+$stmt->execute();
+
+// Fetch all products
+$products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
+
+
 
 </body>
 </html>
@@ -75,7 +126,21 @@ $listCategories = $CategorieC->AfficherCategorie();
 	</head>
 
 	<body>
+	<div id="global-search" class="gl-s gls-simple">
+    <!-- Begin global search close button -->
+    <div class="global-search-close-wrap">
+        <a href="#0" class="global-search-close" title="Close">
+            <i class="fas fa-close"></i>
+        </a>
+    </div>
+    <!-- End global search close button -->
 
+    <!-- Begin global search form -->
+    <form id="global-search-form" method="get" action="search-results-2.php">
+        <input type="text" class="form-control" id="global-search-input" name="search" placeholder="Type your keywords...">
+    </form>
+    <!-- End global search form -->
+</div>
 		<!-- ===================
 		///// Begin header /////
 		==================== -->
@@ -152,16 +217,18 @@ $listCategories = $CategorieC->AfficherCategorie();
 									</ul>
 								</li>
 								<li class="has-children">
-									<a href="#0" class="sub-menu-trigger">Shop</a> 
-									<ul class="sub-menu">
-										<li><a href="shop.php">Shop List</a></li>
-										<?php foreach($listCategories as $categorie){
- 										?>
-										<li><a href="shop.php?cat=<?php echo $categorie['idC'];?>"><?php echo $categorie['nomC']; ?></a></li>
-										<?php }
-										?>
-									</ul>
-								</li>
+    <a href="#0" class="sub-menu-trigger">Shop</a> 
+    <ul class="sub-menu">
+        <li><a href="shop.php">Shop List</a></li>
+        <?php foreach($listCategories as $categorie): ?>
+            <li>
+                <a href="shop.php?cat=<?php echo $categorie['idC']; ?>">
+                    <?php echo $categorie['nomC']; ?>
+                </a>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</li> 
 								<li class="has-children">
 									<a href="#0" class="sub-menu-trigger">Contact</a> 
 									<ul class="sub-menu">
@@ -244,11 +311,15 @@ $listCategories = $CategorieC->AfficherCategorie();
 
 					<li>
 						<!-- Begin shop filter trigger -->
-						<div id="shop-filter-trigger">
-							<a href="#0" class="sft-icon" title="Product Filter" data-toggle="modal" data-target="#modal-66511298">
+						<li>
+						<!-- Begin global search trigger -->
+						<div id="global-search-trigger">
+							<a href="#0" class="gst-icon" title="Search...">
 								<i class="fas fa-search"></i>
 							</a>
 						</div>
+						<!-- End global search trigger -->
+					</li>	
 						<!-- End shop filter trigger -->
 					</li>
 				</ul> 
@@ -264,129 +335,14 @@ $listCategories = $CategorieC->AfficherCategorie();
 		<!-- =========================
 		///// Begin shop filter  /////
 		========================== -->
-		<div id="shop-filter" class="s-filter">
-
-			<!-- Begin shop filter header -->
-			<div class="shop-filter-header">
-				<a href="#" class="shop-filter-close">×</a>
-				<h4 class="shop-filter-title">Product Filter</h4>
-			</div>
-			<!-- End shop filter header -->
-
-			<!-- Begin shop filter inner -->
-			<div class="shop-filter-inner">
-				<div class="shop-filter-box">
-					
-					<!-- Begin product search form -->
-					<form id="product-search-form" method="get" action="https://demo.themetorium.net/html/waldo/search-results-2.php">
-						<div class="form-group form-btn-inside">
-							<input type="text" class="form-control" id="product-search-input" name="search" placeholder="Search...">
-							<button type="submit"><i class="fas fa-search"></i></button>
-						</div>
-					</form>
-					<!-- End product search form -->
-					
-				</div> <!-- /.shop-filter-box -->
-
-				<div class="shop-filter-box">
-					<h4 class="sfb-heading">Categories</h4>
-
-					<!-- Begin product categories -->
-					<ul class="product-categories">
-						<li class="active"><a href="#" class="sm-scroll">Cuffs <span>26</span></a></li>
-						<li><a href="#" class="sm-scroll">Rings <span>17</span></a></li>
-						<li><a href="#" class="sm-scroll">Necklaces <span>31</span></a></li>
-						<li><a href="#" class="sm-scroll">Clothes <span>69</span></a></li>
-						<li><a href="#" class="sm-scroll">Earrings <span>89</span></a></li>
-						<li><a href="#" class="sm-scroll">Bags <span>89</span></a></li>
-						<li><a href="#" class="sm-scroll">Totebags<span>89</span></a></li>
-					</ul>
-					<!-- End product categories -->
-					
-				</div> <!-- /.shop-filter-box -->
-
-				<!-- Begin shop filter form -->
-				<form id="shop-filter-form">
-
-					<div class="shop-filter-box">
-						
-
-					
-
-						<!-- Begin product show on page -->
-					
-						
-					</div> <!-- /.shop-filter-box -->
-
-					<div class="shop-filter-box">
-    <h4 class="sfb-heading">Filter By Price Range</h4>
-
-    <!-- Begin price range slider -->
-    <div class="price-range-slider-wrap">
-        <div id="price-range-slider"></div>
-        <div class="price-range">
-            <label for="amount">Price:</label>
-            <input type="text" id="amount" readonly>
-            <button type="submit" id="price-filter-btn" class="btn btn-primary btn-xs">Filter</button>
-        </div>
-    </div>
-    <!-- End price range slider -->
-</div> <!-- /.shop-filter-box -->
-
-<div class="shop-filter-box">
-    <h4 class="sfb-heading">Filter By Price</h4>
-
-    <!-- Begin filter by price -->
-    <div class="radio-button-styled">
-        <label>
-            <input type="radio" name="price-range" id="price-0-20" value="0-20">
-            <span class="box"></span> $0 - $20
-        </label>
-        <label>
-            <input type="radio" name="price-range" id="price-20-60" value="20-60">
-            <span class="box"></span> $20 - $60
-        </label>
-        <label>
-            <input type="radio" name="price-range" id="price-60-100" value="60-100">
-            <span class="box"></span> $60 - $100
-        </label>
-    </div>
-    <!-- End filter by price -->
-</div> <!-- /.shop-filter-box -->
-
-<div class="shop-filter-box">
-    <h4 class="sfb-heading">Filter By Color</h4>
-
-    <!-- Begin filter by color -->
-    <div class="checkbox-styled">
-        <label>
-            <input type="checkbox" name="color" id="color-red" value="red">
-            <span class="box"></span> Red <span class="filter-count"></span>
-        </label>
-        <label>
-            <input type="checkbox" name="color" id="color-blue" value="blue">
-            <span class="box"></span> Blue <span class="filter-count"></span>
-        </label>
-        <label>
-            <input type="checkbox" name="color" id="color-green" value="green">
-            <span class="box"></span> Green <span class="filter-count"></span>
-        </label>
-        <label>
-            <input type="checkbox" name="color" id="color-black" value="black">
-            <span class="box"></span> Black <span class="filter-count"></span>
-        </label>
-        <label>
-            <input type="checkbox" name="color" id="color-gold" value="gold">
-            <span class="box"></span> Gold <span class="filter-count"></span>
-        </label>
-    </div>
-    <!-- End filter by color -->
-</div> <!-- /.shop-filter-box -->
-
-<div class="shop-filter-buttons">
-    <button type="submit" id="shop-filter-submit" class="btn btn-primary btn-block btn-sm margin-top-10">Apply Filters</button>
-</div>
 		
+			<!-- End shop filter header -->
+			
+
+
+    <!-- End product categories -->
+
+
 					</div> <!-- /.shop-filter-box -->
 
 					
@@ -422,7 +378,7 @@ $listCategories = $CategorieC->AfficherCategorie();
 				<section id="page-header" >
 
 					<!-- Begin page header image -->
-					<div class="page-header-image parallax fade-out-scroll-6 bg-image" style="background-image: url(assets/img/page-header/page-header-bg-19.jpg); background-position: <20% 20%;">
+					<div class="cc-item parallax bg-image" style="background-image: url(assets/img/page-header/portrait-human-woman-fan.jpg); background-position: <50% 50%;"data-percent-height="0.3">
 
 						<!-- Begin page header caption -->
 						<div class="page-header-caption">
@@ -450,32 +406,11 @@ $listCategories = $CategorieC->AfficherCategorie();
 
 				<!-- ============================== -->
 				
-				<?php
-require_once '../../../config.php'; // Include the database connection
+			
 
-$pdo = config::getConnexion();
-
-// Pagination settings
-$productsPerPage = 3; // Number of products per page
-$totalProducts = (int)$pdo->query('SELECT COUNT(idProduit) FROM produit')->fetchColumn(); // Total product count
-$totalPages = ceil($totalProducts / $productsPerPage); // Total number of pages
-$currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1; // Current page
-if ($currentPage < 1) $currentPage = 1;
-if ($currentPage > $totalPages) $currentPage = $totalPages;
-
-$offset = ($currentPage - 1) * $productsPerPage;
-
-// Fetch products for the current page
-$query = $pdo->prepare('SELECT * FROM produit LIMIT :offset, :limit');
-$query->bindValue(':offset', $offset, PDO::PARAM_INT);
-$query->bindValue(':limit', $productsPerPage, PDO::PARAM_INT);
-$query->execute();
-$products = $query->fetchAll(PDO::FETCH_ASSOC);
-
-
-?>
 
 <section id="shop-list-section">
+	
     <div class="isotope-wrap">
         <div class="isotope col-3">
             <div class="isotope-items-wrap sli-meta-center">
@@ -509,40 +444,41 @@ $products = $query->fetchAll(PDO::FETCH_ASSOC);
 </section>
 
 <!-- Begin pagination -->
+<!-- Pagination -->
 <nav class="pagination-wrap bg-main">
     <ul class="pagination">
         <!-- First Page Link -->
         <?php if ($currentPage > 1): ?>
             <li class="first">
-                <a href="?page=1" aria-label="First">First</a>
+                <a href="?page=1<?php echo $categoryFilter ? '&cat=' . $categoryFilter : ''; ?>" aria-label="First">First</a>
             </li>
         <?php endif; ?>
 
         <!-- Previous Page Link -->
         <?php if ($currentPage > 1): ?>
             <li class="prev">
-                <a href="?page=<?= $currentPage - 1 ?>">Prev</a>
+                <a href="?page=<?= $currentPage - 1 ?><?php echo $categoryFilter ? '&cat=' . $categoryFilter : ''; ?>">Prev</a>
             </li>
         <?php endif; ?>
 
         <!-- Page Numbers -->
         <?php for ($i = 1; $i <= $totalPages; $i++): ?>
             <li class="<?= $i === $currentPage ? 'active' : '' ?>">
-                <a href="?page=<?= $i ?>"><?= $i ?></a>
+                <a href="?page=<?= $i ?><?php echo $categoryFilter ? '&cat=' . $categoryFilter : ''; ?>"><?= $i ?></a>
             </li>
         <?php endfor; ?>
 
         <!-- Next Page Link -->
         <?php if ($currentPage < $totalPages): ?>
             <li class="next">
-                <a href="?page=<?= $currentPage + 1 ?>">Next</a>
+                <a href="?page=<?= $currentPage + 1 ?><?php echo $categoryFilter ? '&cat=' . $categoryFilter : ''; ?>">Next</a>
             </li>
         <?php endif; ?>
 
         <!-- Last Page Link -->
         <?php if ($currentPage < $totalPages): ?>
             <li class="last">
-                <a href="?page=<?= $totalPages ?>" aria-label="Last">Last</a>
+                <a href="?page=<?= $totalPages ?><?php echo $categoryFilter ? '&cat=' . $categoryFilter : ''; ?>" aria-label="Last">Last</a>
             </li>
         <?php endif; ?>
     </ul>

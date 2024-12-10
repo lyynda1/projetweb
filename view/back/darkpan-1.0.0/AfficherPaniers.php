@@ -191,6 +191,7 @@
                                     <th scope="col">QUANTITÉ</th>
                                     <th scope="col">PRIX</th>
                                     <th scope="col">TOTAL DU PANIER</th>
+                                    <th scope="col">Created At</th>
                                     <th scope="col">SUPPRIMER</th>
                                 </tr>
                             </thead>
@@ -210,11 +211,12 @@
                                             <td><?php echo $panier['quantite'];?></td>
                                             <td><?php echo $panier['prix'];?> €</td>
                                             <td><?php echo $panier['prixTotal'];?> €</td>
-
+                                            <td><?php echo $panier['created_at'];?></td>
                                            
                                             <td>
                                             <a  class="btn btn-danger btn-sm"   href="SupprimerPanier.php?idPanier=<?php echo $panier['idPanier']; ?>">Supprimer</a>
                                             </td>
+                                            
                                         </tr>
                                         <?php
                                     }

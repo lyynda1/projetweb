@@ -1,13 +1,28 @@
 <?php
-    include '../../../controller/ProduitC.php';
-    include '../../../controller/CategorieC.php';
+include '../../../controller/ProduitC.php';
+include '../../../controller/CategorieC.php';
 
-    $ProduitC = new ProduitC();
-    $CategorieC = new CategorieC();
+$ProduitC = new ProduitC();
+$CategorieC = new CategorieC();
 
-    $listProduits = $ProduitC->AfficherProduits();
+// Number of products per page
+$productsPerPage = 4;
+
+// Get current page number from URL (default to page 1)
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+
+// Calculate the OFFSET for the query
+$offset = ($page - 1) * $productsPerPage;
+
+// Fetch the products with LIMIT and OFFSET
+$listProduits = $ProduitC->AfficherProduits($productsPerPage, $offset);
+
+// Fetch total number of products for pagination calculation
+$totalProducts = $ProduitC->getTotalProducts();
+$totalPages = ceil($totalProducts / $productsPerPage);
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -245,6 +260,62 @@
             </div>
             <!-- Table End -->
 
+<!-- Pagination Controls -->
+<div class="pagination">
+    <?php if ($page > 1): ?>
+        <a href="?page=<?php echo $page - 1; ?>" class="prev">Previous</a>
+    <?php endif; ?>
+
+    <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+        <a href="?page=<?php echo $i; ?>" class="page-number <?php echo ($i == $page) ? 'active' : ''; ?>"><?php echo $i; ?></a>
+    <?php endfor; ?>
+
+    <?php if ($page < $totalPages): ?>
+        <a href="?page=<?php echo $page + 1; ?>" class="next">Next</a>
+    <?php endif; ?>
+</div>
+
+<style>
+    /* Center the pagination container on the page */
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        padding: 10px;
+    }
+
+    /* Style the pagination links */
+    .pagination a {
+        padding: 8px 16px;
+        margin: 0 4px;
+        
+        text-decoration: none;
+       
+    }
+
+    /* Active page style */
+    .pagination a.active {
+       
+        color: white;
+    }
+
+    /* Hover effect for pagination links */
+    .pagination a:hover {
+          /* Set hover color to yellow */
+         /* Optional: Set text color to black for contrast */
+    }
+
+    /* Disable text selection on pagination links */
+    .pagination a:focus {
+        outline: none;
+    }
+
+    /* Style for previous/next buttons */
+    .pagination .prev, .pagination .next {
+        font-weight: bold;
+    }
+</style>
 
             <!-- Footer Start -->
             <div class="container-fluid pt-4 px-4">
@@ -283,6 +354,7 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    
 </body>
 
 </html>

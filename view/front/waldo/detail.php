@@ -28,7 +28,7 @@ $listCategories = $CategorieC->AfficherCategorie();
 <head>
 
 		<!-- Title -->
-		<title>Exocet Chair - Waldo</title>
+		<title>Detail - Kanzi  </title>
 
 		<!-- Meta -->
 		<meta charset="utf-8">
@@ -444,7 +444,7 @@ $listCategories = $CategorieC->AfficherCategorie();
 											<!-- Begin single product price -->
 											<div class="single-product-price">
 												<!-- $149.00 -->
-												<span class="single-product-price-new"><?php echo $produit['prix']; ?></span>
+												<span class="single-product-price-new"><?php echo $produit['prix']; ?>DT</span>
 											</div>
 											<!-- End single product price -->
 
@@ -490,7 +490,11 @@ $listCategories = $CategorieC->AfficherCategorie();
 
 											<!-- Begin product buttons -->
 											<div class="product-buttons">
-												<button type="submit" class="btn btn-dark"><i class="fas fa-shopping-bag"></i> Add To Cart</button>
+												
+												<a href="add_to_cart.php?idProduit=<?php echo $produit['idProduit']; ?>" 
+                                       class="btn btn-dark">
+                                        <i class="fas fa-shopping-bag"></i> Add To Cart
+                                    </a>
 												<a href="#" class="btn btn-primary" title="Add to wishlist"><i class="fas fa-heart"></i></a>
 												<a href="#" class="btn btn-primary" title="Add to compare"><i class="fas fa-retweet"></i></a>
 											</div>

@@ -5,18 +5,44 @@
 	class ProduitC {
 
 /////..............................Afficher............................../////
-		function AfficherProduits(){
-			$sql="SELECT * FROM Produit";
-			$db = config::getConnexion();
-			try{
-				$liste = $db->query($sql);
-				return $liste;
-			}
-			catch(Exception $e){
-				die('Erreur:'. $e->getMessage());
-			}
-		}
+public function AfficherProduits($limit = null, $offset = null) {
+    $db = config::getConnexion();
+    
+    // Base query to get products
+    $sql = "SELECT * FROM Produit";
+    
+    // If LIMIT and OFFSET are provided, append them to the query
+    if ($limit !== null && $offset !== null) {
+        $sql .= " LIMIT :limit OFFSET :offset";
+    }
 
+    try {
+        // Prepare the statement
+        $stmt = $db->prepare($sql);
+        
+        // Bind parameters if LIMIT and OFFSET are used
+        if ($limit !== null && $offset !== null) {
+            $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+            $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+        }
+        
+        // Execute the query
+        $stmt->execute();
+        
+        // Return the list of products
+        return $stmt->fetchAll();
+    } catch (Exception $e) {
+        die('Erreur: ' . $e->getMessage());
+    }
+}
+public function getTotalProducts() {
+    $db = config::getConnexion();
+    $query = "SELECT COUNT(*) as total FROM produit";
+    $stmt = $db->prepare($query);
+    $stmt->execute();
+    $result = $stmt->fetch();
+    return $result['total'];
+}
 /////..............................Supprimer............................../////
 		function SupprimerProduit($idProduit){
 			$sql="DELETE FROM Produit WHERE idProduit=:idProduit";
