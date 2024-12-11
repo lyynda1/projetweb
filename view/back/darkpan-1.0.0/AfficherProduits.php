@@ -262,16 +262,29 @@ $totalPages = ceil($totalProducts / $productsPerPage);
 
 <!-- Pagination Controls -->
 <div class="pagination">
+    <!-- First Page Link -->
+    <?php if ($page > 1): ?>
+        <a href="?page=1" class="first">First</a>
+    <?php endif; ?>
+
+    <!-- Previous Page Link -->
     <?php if ($page > 1): ?>
         <a href="?page=<?php echo $page - 1; ?>" class="prev">Previous</a>
     <?php endif; ?>
 
+    <!-- Page Numbers -->
     <?php for ($i = 1; $i <= $totalPages; $i++): ?>
         <a href="?page=<?php echo $i; ?>" class="page-number <?php echo ($i == $page) ? 'active' : ''; ?>"><?php echo $i; ?></a>
     <?php endfor; ?>
 
+    <!-- Next Page Link -->
     <?php if ($page < $totalPages): ?>
         <a href="?page=<?php echo $page + 1; ?>" class="next">Next</a>
+    <?php endif; ?>
+
+    <!-- Last Page Link -->
+    <?php if ($page < $totalPages): ?>
+        <a href="?page=<?php echo $totalPages; ?>" class="last">Last</a>
     <?php endif; ?>
 </div>
 
