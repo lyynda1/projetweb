@@ -1,3 +1,26 @@
+
+<?php
+include '../../../controller/ProduitC.php';
+include '../../../controller/PanierC.php';
+include '../../../controller/CategorieC.php';
+$PanierC = new PanierC();
+$ProduitC = new ProduitC();
+$CategorieC = new CategorieC();
+$idUser = 1; // Static user ID for demonstration
+$cartItems = $PanierC->AfficherPanier();
+if(isset($_GET['cat']))
+{
+	$listProduits = $ProduitC->RechercheCat($_GET['cat']);
+}else 
+{
+	$listProduits = $ProduitC->AfficherProduits();
+
+}
+
+$listCategories = $CategorieC->AfficherCategorie();
+
+?>
+
 <!DOCTYPE html>
 
 <!--
@@ -9,11 +32,11 @@
 
 <html lang="en">
 	
-<!-- Mirrored from demo.themetorium.net/html/waldo/shop-checkout.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2024 15:51:19 GMT -->
+<!-- Mirrored from demo.themetorium.net/html/waldo/shop-checkout.php by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2024 15:51:19 GMT -->
 <head>
 
 		<!-- Title -->
-		<title>Checkout - Waldo</title>
+		<title>Checkout - Kanzi</title>
 
 		<!-- Meta -->
 		<meta charset="utf-8">
@@ -67,7 +90,7 @@
 			<!-- End global search close button -->
 
 			<!-- Begin global search form -->
-			<form id="global-search-form" method="get" action="https://demo.themetorium.net/html/waldo/search-results-2.html">
+			<form id="global-search-form" method="get" action="https://demo.themetorium.net/html/waldo/search-results-2.php">
 				<input type="text" class="form-control" id="global-search-input" name="search" placeholder="Type your keywords...">
 			</form>
 			<!-- End global search form -->
@@ -84,7 +107,7 @@
 			<!-- Begin logo
 			================ -->
 			<div id="logo">
-				<a href="index.html"><img src="assets/img/logo-light.png" title="Home" alt="logo"></a>
+				<a href="index.php"><img src="assets/img/logo-light.png" title="Home" alt="logo"></a>
 			</div>
 			<!-- End logo -->
 
@@ -107,78 +130,18 @@
 						<!-- Begin menu nav -->
 						<div class="menu-nav">
 							<ul class="menu-list">
-								<li class="has-children">
-									<a href="#0" class="sub-menu-trigger">Home</a> 
-									<ul class="sub-menu">
-										<li><a href="index.html">Home v.1</a></li>
-										<li><a href="index-2.html">Home v.2</a></li>
-									</ul>
-								</li>
-								<li class="has-children">
-									<a href="#0" class="sub-menu-trigger">About</a> 
-									<ul class="sub-menu">
-										<li><a href="about-us.html">About Us</a></li>
-										<li><a href="about-me.html">About Me</a></li>
-										<li><a href="team.html">The Team</a></li>
-									</ul>
-								</li>
-								<li class="has-children">
-									<a href="#0" class="sub-menu-trigger">Portfolio</a> 
-									<ul class="sub-menu">
-										<li><a href="portfolio-list.html">Portfolio List v.1</a></li>
-										<li><a href="portfolio-list-2.html">Portfolio List v.2</a></li>
-										<li><a href="portfolio-single-1.html">Single Item v.1</a></li>
-										<li><a href="portfolio-single-2.html">Single Item v.2</a></li>
-										<li><a href="portfolio-single-3.html">Single Item v.3</a></li>
-										<li><a href="portfolio-single-4.html">Single Item v.4</a></li>
-										<li><a href="portfolio-single-5.html">Single Item v.5</a></li>
-										<li><a href="portfolio-single-6.html">Single Item v.6</a></li>
-									</ul>
-								</li>
-								<li class="has-children">
-									<a href="#0" class="sub-menu-trigger">Articles</a> 
-									<ul class="sub-menu">
-										<li><a href="blog-list-1.html">Blog List v.1</a></li>
-										<li><a href="blog-list-2.html">Blog List v.2</a></li>
-										<li><a href="blog-single.html">Blog Post No Sidebar</a></li>
-										<li><a href="blog-single-sidebar-left.html">Blog Post Sidebar Left</a></li>
-										<li><a href="blog-single-sidebar-right.html">Blog Post Sidebar Right</a></li>
-									</ul>
-								</li>
-								<li class="has-children">
-									<a href="#0" class="sub-menu-trigger">Gallery</a> 
-									<ul class="sub-menu">
-										<li><a href="gallery-list.html">Gallery List v.1</a></li>
-										<li><a href="gallery-list-2.html">Gallery List v.2</a></li>
-										<li><a href="gallery-single.html">Gallery Single v.1</a></li>
-										<li><a href="gallery-single-2.html">Gallery Single v.2</a></li>
-									</ul>
-								</li>
+								
 								<li class="has-children active">
 									<a href="#0" class="sub-menu-trigger">Shop</a> 
 									<ul class="sub-menu">
-										<li><a href="shop-list.html">Shop List</a></li>
-										<li><a href="shop-single.html">Single Product</a></li>
-										<li><a href="shop-cart.html">Shoping Cart</a></li>
-										<li><a href="shop-checkout.html">Checkout</a></li>
+										<li><a href="shop-list.php">Shop List</a></li>
+										<li><a href="next1.php">Jewerly and Accesories</a></li>
+										
+										<li><a href="shop-cart.php">Shoping Cart</a></li>
+										<li><a href="shop-checkout.php">Checkout</a></li>
 									</ul>
 								</li>
-								<li class="has-children">
-									<a href="#0" class="sub-menu-trigger">Contact</a> 
-									<ul class="sub-menu">
-										<li><a href="contact.html">Contact</a></li>
-										<li><a href="contact-simple.html">Contact Simple</a></li>
-									</ul>
-								</li>
-								<li class="has-children">
-									<a href="#0" class="sub-menu-trigger">Pages</a> 
-									<ul class="sub-menu">
-										<li><a href="page-dummy.html">Dummy Page v.1</a></li>
-										<li><a href="page-dummy-2.html">Dummy Page v.2</a></li>
-										<li><a href="search-results.html">Search Results v.1</a></li>
-										<li><a href="search-results-2.html">Search Results v.2</a></li>
-									</ul>
-								</li>
+								
 							</ul>
 						</div>
 						<!-- End menu nav -->
@@ -255,80 +218,7 @@
 				</ul> 
 
 				<ul>
-					<li>
-						<!-- Begin shopping cart trigger  -->
-						<div id="shopping-cart-trigger">
-							<a href="#0" class="cart-icon" title="Shopping Cart" data-toggle="modal" data-target="#modal-38875649">
-								<i class="fas fa-shopping-bag"></i>
-								<span class="cart-num">2</span>
-							</a>
-						</div>
-						<!-- End shopping cart trigger -->
-
-						<!-- Begin modal (for shopping cart) -->
-						<div id="modal-38875649" class="modal modal-center fade" tabindex="-1" role="dialog" aria-hidden="false">
-							<div class="modal-dialog max-width-500">
-								<div class="modal-content">
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-										<h4 class="modal-title">2 items in your cart</h4>
-									</div>
-									<div class="modal-body">
-
-										<!-- Begin shopping cart content -->
-										<div class="cart-content">
-											<ul class="cart-product-list">
-												<li>
-													<!-- Begin shopping cart product -->
-													<div class="cart-product">
-														<a href="shop-single.html" class="cart-pr-thumb bg-image" style="background-image: url(assets/img/shop/shop-7.jpg); background-position: 50% 50%;"></a>
-														<div class="cart-pr-info">
-															<a href="shop-single.html" class="cart-pr-title">Armchair "Yh"</a>
-															<div class="cart-pr-price">Price: <span>$920.00</span></div>
-															<div class="cart-pr-quantity">Cuantity: <span>1</span></div>
-														</div>
-														<a href="#0" class="cart-pr-remove" title="Remove from cart">×</a>
-													</div>
-													<!-- End shopping cart product -->
-												</li>
-
-												<li>
-													<!-- Begin shopping cart product -->
-													<div class="cart-product">
-														<a href="shop-single.html" class="cart-pr-thumb bg-image" style="background-image: url(assets/img/shop/shop-2.jpg); background-position: 50% 50%;"></a>
-														<div class="cart-pr-info">
-															<a href="shop-single.html" class="cart-pr-title">Exocet Chair</a>
-															<div class="cart-pr-price">Price: <span>$390.00</span></div>
-															<div class="cart-pr-quantity">Cuantity: <span>1</span></div>
-														</div>
-														<a href="#0" class="cart-pr-remove" title="Remove from cart">×</a>
-													</div>
-													<!-- End shopping cart product -->
-												</li>
-											</ul>
-										</div>
-										<!-- End shopping cart content -->
-
-									</div>
-									<div class="modal-footer padding-vertical-0">
-										<div class="cart-total">
-											<strong>Subtotal:</strong> <span>$1,310.00</span>
-										</div>
-										<div class="row">
-											<div class="col-xs-6 no-padding">
-												<a href="shop-cart.html" class="btn btn-dark btn-block btn-lg no-margin">View Cart</a>
-											</div> <!-- /.col -->
-
-											<div class="col-xs-6 no-padding">
-												<a href="shop-checkout.html" class="btn btn-primary btn-block btn-lg no-margin">Checkout</a>
-											</div> <!-- /.col -->
-										</div> <!-- /.row -->
-									</div>
-								</div> <!-- /.modal-content -->
-							</div> <!-- /.modal-dialog -->
-						</div>
-						<!-- End modal -->
-					</li>
+					
 				</ul>
 			</div>
 			<!-- End header attriputes -->
@@ -344,32 +234,6 @@
 
 			<!-- Begin content container -->
 			<div id="content-container">
-
-				<!-- ========================
-				///// Begin page header /////
-				========================= -->
-				<section id="page-header" data-percent-height="0.7">
-
-					<!-- Begin page header image -->
-					<div class="page-header-image parallax fade-out-scroll-6 bg-image" style="background-image: url(assets/img/page-header/page-header-bg-20.jpg); background-position: 50% 60%;">
-
-						<!-- Begin page header caption -->
-						<div class="page-header-caption">
-							<h1 class="page-header-title">Sheckout</h1>
-						</div>
-						<!-- End page header caption -->
-
-						<!-- Begin scroll down button -->
-						<a href="#shop-checkout-section" class="scroll-down sm-scroll hide-from-sm" title="Scroll down"></a>
-						<!-- End scroll down button -->
-
-					</div>
-					<!-- End page header image -->
-
-				</section>
-				<!-- End page header -->
-
-
 				<!-- ==================================
 				///// Begin shop checkout section /////
 				=================================== -->
@@ -400,12 +264,12 @@
 
 														<div class="form-group">
 															<label for="username">Username or email <span class="text-red">*</span></label> 
-															<input type="text" class="form-control" name="username" id="username" required>
+															<input type="text" class="form-control" name="username" id="username" required placeholder="Username">
 														</div>
 													
 														<div class="form-group">
 															<label for="password">Password <span class="text-red">*</span></label> 
-															<input class="form-control" type="password" name="password" id="password" required>
+															<input class="form-control" type="password" name="password" id="password" required placeholder="********">
 														</div>
 
 														<div class="form-group">
@@ -449,243 +313,517 @@
 										</div>
 
 										<!-- Begin checkout form wrap 
-										============================== -->
+								
 										<div class="checkout-form-wrap">
+    Begin checkout form -->
+    <form action="shop.php"  method="POST" onsubmit="return control()">
+        <h2>- Billing Details</h2>
+        <p class="text-gray">Fields marked with "*" are required!</p>
 
-											<!-- Begin checkout form -->
-											<form id="checkout-form">
+        <!-- Begin billing details -->
+        <div class="billing-details">
+            <!-- Row 1: First Name and Last Name -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="billing-first-name">First Name <span class="text-red">*</span></label>
+                        <input type="text" class="form-control" name="billing-first-name" id="billing-first-name" placeholder="First Name">
+                    </div>
+                </div> <!-- /.col -->
 
-												<h2>- Billing Details</h2> 
-												<p class="text-gray">Fields marked with "*" are required!</p>
-											
-												<!-- Begin billing details -->
-												<div class="billing-details">
-													
-													<div class="row">
-														<div class="col-md-6">
-															<div class="form-group">
-																<label for="billing-first-name">First Name <span class="text-red">*</span></label> 
-																<input type="text" class="form-control" name="billing-first-name" id="billing-first-name" required>
-															</div>
-														</div> <!-- /.col -->
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="billing-last-name">Last Name <span class="text-red">*</span></label>
+                        <input type="text" class="form-control" name="billing-last-name" id="billing-last-name" placeholder="Last Name">
+                    </div>
+                </div> <!-- /.col -->
+            </div> <!-- /.row -->
 
-														<div class="col-md-6">
-															<div class="form-group">
-																<label for="billing-last-name">Last Name <span class="text-red">*</span></label> 
-																<input type="text" class="form-control" name="billing-last-name" id="billing-last-name" required>
-															</div>
-														</div> <!-- /.col -->
-													</div> <!-- /.row -->
+            <!-- Row 2: Email and Phone -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="billing-email">Email Address <span class="text-red">*</span></label>
+                        <input type="email" class="form-control" name="billing-email" id="billing-email" placeholder="example@example.com">
+                    </div>
+                </div> <!-- /.col -->
 
-													<div class="row">
-														<div class="col-md-12">
-															<div class="form-group">
-																<label for="billing-company-name">Company Name</label> 
-																<input type="text" class="form-control" name="billing-company-name" id="billing-company-name" placeholder="(optional)">
-															</div>
-														</div> <!-- /.col -->
-													</div> <!-- /.row -->
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="billing-phone">Phone <span class="text-red">*</span></label>
+                        <input type="text" class="form-control" name="billing-phone" id="billing-phone" placeholder="+xxx ---------------">
+                    </div>
+                </div> <!-- /.col -->
+            </div> <!-- /.row -->
 
-													<div class="row">
-														<div class="col-md-6">
-															<div class="form-group">
-																<label for="billing-email">Email Address <span class="text-red">*</span></label> 
-																<input type="email" class="form-control" name="billing-email" id="billing-email" required>
-															</div>
-														</div> <!-- /.col -->
+            <!-- Row 3: Country -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Country <span class="text-red">*</span></label>
+                        <select id="country-select" name="country" class="form-control">
+                            <option value="">Select a country</option>
+                        </select>
+                    </div>
+                </div> <!-- /.col -->
+            </div> <!-- /.row -->
 
-														<div class="col-md-6">
-															<div class="form-group">
-																<label for="billing-phone">Phone <span class="text-red">*</span></label> 
-																<input type="text" class="form-control" name="billing-phone" id="billing-phone" required>
-															</div>
-														</div> <!-- /.col -->
-													</div> <!-- /.row -->
+            <!-- Script for Country Dropdown -->
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    fetch('https://restcountries.com/v3.1/all')
+                        .then(response => response.json())
+                        .then(countries => {
+                            const select = document.getElementById("country-select");
 
-													<div class="row">
-														<div class="col-md-12">
-															<div class="form-group">
-																<label>Country <span class="text-red">*</span></label> 
-																<select class="form-control">
-																	<option value="">Select a country</option>
-																</select>
-															</div>
-														</div> <!-- /.col -->
-													</div> <!-- /.row -->
+                            // Sort the countries alphabetically by name
+                            countries.sort((a, b) => {
+                                const nameA = a.name.common.toLowerCase();
+                                const nameB = b.name.common.toLowerCase();
+                                return nameA < nameB ? -1 : nameA > nameB ? 1 : 0;
+                            });
 
-													<div class="row">
-														<div class="col-md-12">
-															<div class="form-group">
-																<label for="billing-address-1">Address <span class="text-red">*</span></label> 
-																<input type="text" class="form-control" name="billing-address-1" id="billing-address-1" placeholder="Street address" required> <br>
-																<input type="text" class="form-control" name="billing-address-2" id="billing-address-2" placeholder="Apartment, suite, unit etc. (optional)" required>
-															</div>
-														</div> <!-- /.col -->
-													</div> <!-- /.row -->
+                            // Add each country to the dropdown
+                            countries.forEach(country => {
+                                const option = document.createElement("option");
+                                option.value = country.cca2;
+                                option.textContent = country.name.common;
+                                select.appendChild(option);
+                            });
+                        })
+                        .catch(error => console.error('Error fetching countries:', error));
+                });
+            </script>
 
-													<div class="row">
-														<div class="col-md-12">
-															<div class="form-group">
-																<label for="billing-city">Town / City <span class="text-red">*</span></label> 
-																<input type="text" class="form-control" name="billing-city" id="billing-city" required>
-															</div>
-														</div> <!-- /.col -->
-													</div> <!-- /.row -->
+            <!-- Address Section -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="billing-address-1">Address <span class="text-red">*</span></label>
+                        <input type="text" class="form-control" name="billing-address-1" id="billing-address-1" placeholder="Street address">
+                    </div>
+                </div> <!-- /.col -->
+            </div> <!-- /.row -->
 
-													<div class="row">
-														<div class="col-md-6">
-															<div class="form-group">
-																<label for="billing-state">State / County <span class="text-red">*</span></label> 
-																<input type="text" class="form-control" name="billing-state" id="billing-state" required>
-															</div>
-														</div> <!-- /.col -->
+            <!-- City Section -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="billing-city">Town / City <span class="text-red">*</span></label>
+                        <input type="text" class="form-control" name="billing-city" id="billing-city">
+                    </div>
+                </div> <!-- /.col -->
+            </div> <!-- /.row -->
 
-														<div class="col-md-6">
-															<div class="form-group">
-																<label for="billing-postcode">Postcode / ZIP <span class="text-red">*</span></label> 
-																<input type="text" class="form-control" name="billing-postcode" id="billing-postcode" required>
-															</div>
-														</div> <!-- /.col -->
-													</div> <!-- /.row -->
+            <!-- State Section -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="billing-state">State / County <span class="text-red">*</span></label>
+                        <input type="text" class="form-control" name="billing-state" id="billing-state">
+                    </div>
+                </div> <!-- /.col -->
+            </div> <!-- /.row -->
 
-													<div class="row">
-														<div class="col-md-12">
-															<div class="form-group">
-																<label for="billing-comments">Order Notes</label> 
-																<textarea name="billing-comments" class="form-control" id="billing-comments" placeholder="Notes about your order, e.g. special notes for delivery (optional)." rows="3" cols="5"></textarea>
-															</div>
-														</div> <!-- /.col -->
-													</div> <!-- /.row -->
+            <!-- Postcode Section -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="billing-postcode">Postcode / ZIP <span class="text-red">*</span></label>
+                        <input type="text" class="form-control" name="billing-postcode" id="billing-postcode">
+                    </div>
+                </div> <!-- /.col -->
+            </div> <!-- /.row -->
 
-												</div>
-												<!-- End billing details -->
+            <!-- Order Notes Section -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="billing-comments">Order Notes</label>
+                        <textarea name="billing-comments" class="form-control" id="billing-comments" placeholder="Notes about your order, e.g. special notes for delivery (optional)." rows="3" cols="5"></textarea>
+                    </div>
+                </div> <!-- /.col -->
+            </div> <!-- /.row -->
 
-												<!-- Begin your order -->
-												<div class="your-order">
-													<h3>- Your Order</h3> <br>
+        </div> <!-- /.billing-details -->
 
-													<!-- Begin table -->
-													<table class="table checkout-table table-striped">
-														<thead>
-															<tr>
-																<th class="product-name hide-from-sm">&nbsp;</th>
-																<th class="product-name">Product</th>
-																<th class="product-total">Total</th>
-															</tr>
-														</thead>
-														<tbody>
-															<tr class="cart-table-item">
-																<td class="product-thumbnail hide-from-sm">
-																	<a href="shop-single.html" class="bg-image" style="background-image: url(assets/img/shop/shop-7.jpg);"></a>
-																</td>
-																<td class="product-name">
-																	Armchair "Yh" <strong class="product-quantity">× 1</strong>
-																</td>
-																<td class="product-total">
-																	<strong><span class="amount">$920.00</span></strong>
-																</td>
-															</tr>
-															<tr class="cart-table-item">
-																<td class="product-thumbnail hide-from-sm">
-																	<a href="shop-single.html" class="bg-image" style="background-image: url(assets/img/shop/shop-2.jpg);"></a>
-																</td>
-																<td class="product-name">
-																	Exocet Chair <strong class="product-quantity">× 1</strong>
-																</td>
-																<td class="product-total">
-																	<strong><span class="amount">$390.00</span></strong>
-																</td>
-															</tr>
-														</tbody>
-													</table>
-													<!-- End table -->
+        <!-- Begin your order -->
+		<section id="shop-cart-section">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12">
 
-													<!-- Begin table -->
-													<table class="table checkout-table table-striped margin-top-40">
-														<tbody>
-															<tr class="shipping">
-																<th>Shipping:</th>
-																<td>
-																	Free Shipping		
-																</td>
-															</tr>
-															<tr class="cart-subtotal">
-																<th>Subtotal:</th>
-																<td>
-																	<strong><span class="amount">$1,310.00</span></strong>
-																</td>
-															</tr>
-															<tr class="order-total">
-																<th>Order Total:</th>
-																<td>
-																	<h3 class="amount text-green">$1,310.00</h3>
-																</td>
-															</tr>
-														</tbody>
-													</table>
-													<!-- End table -->
+								<!-- Begin cart list -->
+								<div class="cart-list">
+									<form>
 
-												</div>
-												<!-- End your order -->
+										<!-- Begin table 
+										=================
+										* Available table classes: "table" (required), "table-striped", "table-bordered", "table-hover", "table-condensed". 
+										-->
+										<table class="table cart-table table-striped">
+											<thead class="bg-main-3">
+												<tr>
+													<th class="product-thumbnail hide-from-sm">
+														&nbsp;
+													</th>
+													<th class="product-name">
+														Product
+													</th>
+													<th class="product-price">
+														Price
+													</th>
+													<th class="product-quantity hide-from-sm">
+														Quantity
+													</th>
+													<th class="product-subtotal">
+														Total
+													</th>
+													<th class="product-remove">
+														&nbsp;
+													</th>
+												</tr>
+											</thead>
+											<tbody>
+												<?php if (!empty($cartItems)) {
+													foreach ($cartItems as $item) {
+														$idProduit = $ProduitC->RecupererProduit($item['idProduit']);
+														$nomProduit = $idProduit['nomProduit'];
+														$image = $idProduit['image']
+														?>
+														<tr class="cart-table-item">
+															<td class="product-thumbnail hide-from-sm">
+																<a  class="bg-image"
+																	style="background-image: url('../../back/darkpan-1.0.0/img/<?php echo $image; ?>');">
+																</a>
+															</td>
+															<td class="product-name">
+																<a>
+																	<strong><?php echo $nomProduit; ?></strong>
+																</a>
+															</td>
+															<td class="product-price">
+																<span class="amount"><?php echo $item['prix']; ?> DT</span>
+															</td>
+															<td class="product-quantity hide-from-sm">
+																<div title="Quantity">
+																	<div class="dec qtybutton" data-id="<?php echo $item['idProduit']; ?>" data-price="<?php echo $item['prix']; ?>">-</div>
+																	<input type="text" value="<?php echo $item['quantite']; ?>" class="cart-plus-minus-box" 
+																		id="quantity-<?php echo $item['idProduit']; ?>" readonly>
+																	<div class="inc qtybutton" data-id="<?php echo $item['idProduit']; ?>" data-price="<?php echo $item['prix']; ?>">+</div>
+																</div>
+															</td>
 
-												<!-- Begin payment methods -->
-												<div class="payment-methods">
-													<h3>- Payment Methods</h3> <br>
+															<td class="product-subtotal">
+																<span class="amount"><strong><?php echo $item['prixTotal']; ?> DT</strong></span>
+															</td>
+															<td class="product-remove">
+																<a title="Remove this item" class="remove"
+																	href="remove_from_cart.php?idProduit=<?php echo $item['idProduit']; ?>">
+																	<i class="fas fa-times"></i>
+																</a>
+															</td>
 
-													<ul class="list-unstyled">
-														<li>
-															<div class="radio-button-styled">
-																<label class="radio-inline">
-																	<input type="radio" name="radio-93456936" id="radio-24431967" value="option1" checked="">
-																	<span class="box"></span> Direct Bank Transfer
-																</label>
-															</div>
-														</li>
-														<li>
-															<div class="radio-button-styled">
-																<label class="radio-inline">
-																	<input type="radio" name="radio-93456936" id="radio-77654511" value="option2">
-																	<span class="box"></span> Cheque Payment
-																</label>
-															</div>
-														</li>
-														<li>
-															<div class="radio-button-styled">
-																<label class="radio-inline">
-																	<input type="radio" name="radio-93456936" id="radio-09899887" value="option3">
-																	<span class="box"></span> Paypal <img src="assets/img/paypal.png" alt="PayPal Acceptance Mark"> 
-																	<a href="#" class="small" title="What is PayPal?">What is PayPal?</a>
-																</label>
-															</div>
-														</li>
-													</ul>
-												</div>
-												<!-- End payment methods -->
+														</tr>
+													<?php } ?>
+												<?php } else { ?>
+													<tr>
+														<td colspan="6" class="text-center">Your cart is empty!</td>
+													</tr>
+												<?php } ?>
+												<tr>
+													<td class="padding-top-30" colspan="6">
+														<a href="shop.php" class="btn btn-default hide-from-sm">Continue Shopping</a>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+										<!-- End table -->
 
-												<input type="submit" class="btn btn-primary btn-block btn-xlg" name="checkout-place-order" id="checkout-place-order" value="Place order" data-value="Place order">
-
-											</form>
-											<!-- End checkout form -->
-
-										</div>
-										<!-- End checkout form wrap -->
-
-									</div>
-									<!-- End accordion -->
-
+									
 								</div>
-								<!-- End checkout wrap -->
+								<!-- End cart list -->
 
 							</div> <!-- /.col -->
 						</div> <!-- /.row -->
+
+
 					</div> <!-- /.container -->
 
 				</section>
-				<!-- End section -->
+				<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Function to update the subtotal for each item
+    function updateSubtotal(itemId, price) {
+        const quantity = document.getElementById(`quantity-${itemId}`).value;
+        const subtotal = price * quantity;
+        // Find the element where we display the subtotal for this item
+        const subtotalElement = document.querySelector(`#quantity-${itemId}`).closest('tr').querySelector('.product-subtotal .amount');
+        subtotalElement.textContent = `${subtotal.toFixed(2)} DT`;  // Update the subtotal display
+        return subtotal;
+    }
+
+    // Update the overall subtotal and total
+    function updateTotals() {
+        let subtotal = 0;
+        const items = document.querySelectorAll('.cart-table-item');
+        
+        // Loop through all cart items to update their subtotals
+        items.forEach(item => {
+            const priceElement = item.querySelector('.product-price .amount');
+            const price = parseFloat(priceElement.textContent.replace(' DT', ''));
+            const itemId = item.querySelector('.cart-plus-minus-box').id.split('-')[1];
+            subtotal += updateSubtotal(itemId, price);
+        });
+
+        const total = subtotal;  // Assuming no extra charges like taxes or discounts for now
+        document.getElementById('subtotal').textContent = `${subtotal.toFixed(2)} DT`;  // Update the cart subtotal
+        document.getElementById('total').textContent = `${total.toFixed(2)} DT`;  // Update the cart total
+    }
+
+    // Event listeners for quantity buttons
+    const qtyButtons = document.querySelectorAll('.qtybutton');
+    qtyButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const itemId = this.getAttribute('data-id');
+            const price = parseFloat(this.getAttribute('data-price'));
+            const quantityField = document.getElementById(`quantity-${itemId}`);
+            let quantity = parseInt(quantityField.value);
+
+            if (this.classList.contains('inc')) {
+                quantity++;
+            } else if (this.classList.contains('dec') && quantity > 1) {
+                quantity--;
+            }
+
+            quantityField.value = quantity;
+
+            updateSubtotal(itemId, price);  // Update the individual item's subtotal
+            updateTotals();  // Update the overall total and subtotal
+            updateCart(itemId, quantity);  // Update the cart on the server
+        });
+    });
+
+    // Function to update the cart on the server
+    function updateCart(idProduit, quantity) {
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', 'update_cart.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                console.log(xhr.responseText); // Debug: log server response
+            }
+        };
+        xhr.send(`idProduit=${idProduit}&quantity=${quantity}`);
+    }
+
+    // Initial total calculation on page load
+    updateTotals();
+});
+
+</script>
 
 
-			</div>
-			<!-- End content container -->
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+    // Function to update the subtotal for each item
+    function updateSubtotal(itemId, price) {
+        const quantity = document.getElementById(`quantity-${itemId}`).value;
+        const subtotal = price * quantity;
+        document.querySelector(`#quantity-${itemId}`).parentElement.querySelector('.product-subtotal-item').textContent = `${subtotal} DT`;
+
+        return subtotal;
+    }
+
+    // Update the overall subtotal and total
+    function updateTotals() {
+        let subtotal = 0;
+        const items = document.querySelectorAll('.cart-table-item');
+        items.forEach(item => {
+            const priceElement = item.querySelector('.product-price-item');
+            const price = parseFloat(priceElement.getAttribute('data-price'));
+            const itemId = item.querySelector('.cart-plus-minus-box').id.split('-')[1];
+            subtotal += updateSubtotal(itemId, price);
+        });
+
+        const total = subtotal;  // Assuming no extra charges like taxes or discounts for now
+        document.getElementById('subtotal').textContent = `${subtotal.toFixed(2)} DT`;
+        document.getElementById('total').textContent = `${total.toFixed(2)} DT`;
+    }
+
+    // Event listeners for quantity buttons
+    const qtyButtons = document.querySelectorAll('.qtybutton');
+    qtyButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const itemId = this.getAttribute('data-id');
+            const price = parseFloat(this.getAttribute('data-price'));
+            const quantityField = document.getElementById(`quantity-${itemId}`);
+            let quantity = parseInt(quantityField.value);
+
+            if (this.classList.contains('inc')) {
+                quantity++;
+            } else if (this.classList.contains('dec') && quantity > 1) {
+                quantity--;
+            }
+
+            quantityField.value = quantity;
+
+            updateSubtotal(itemId, price);
+            updateTotals();
+        });
+    });
+
+    // Initial total calculation on page load
+    updateTotals();
+});
+
+</script>
+    <!-- Cart Totals -->
+    <div class="row" style="display: flex; justify-content: center; align-items: center;">
+        <div class="col-md-6">
+            <div class="cart-totals">
+                <h2>Cart Totals</h2>
+
+                <table class="table">
+                    <tbody>
+                        <tr class="cart-subtotal">
+                            <th>Subtotal:</th>
+                            <td><strong><span class="amount" id="subtotal">0.00DT</span></strong></td>
+                        </tr>
+
+                        <tr class="order-total">
+                            <th>Cart Total:</th>
+                            <td><h3 class="amount text-green" id="total">0.00DT</h3></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <!-- Begin payment methods -->
+        <div class="payment-methods">
+            <h3>- Payment Methods</h3>
+            <br>
+            <ul class="list-unstyled">
+                <li>
+                    <div class="radio-button-styled">
+                        <label class="radio-inline">
+                            <input type="radio" name="radio-93456936" id="radio-24431967" value="option1" checked="">
+                            <span class="box"></span> Cash
+                        </label>
+                    </div>
+                </li>
+                <li>
+                    <div class="radio-button-styled">
+                        <label class="radio-inline">
+                            <input type="radio" name="radio-93456936" id="radio-77654511" value="option2">
+                            <span class="box"></span> Payment Card
+                        </label>
+						<div id="card-details" class="card-details" style="display:none;">
+							<label for="card-type">Select Card Type:</label>
+							<div class="card-select">
+								<!-- Visa Option -->
+								<div class="card-option" data-card="visa" id="visa">
+									<input type="radio" name="card-type" id="visa-radio" value="visa">
+									<img src="assets/img/shop/visa.jpg" height="20" width="30" alt="Visa" class="card-logo">
+									<span>Visa</span>
+								</div>
+								<!-- MasterCard Option -->
+								<div class="card-option" data-card="mastercard" id="mastercard">
+									<input type="radio" name="card-type" id="mastercard-radio" value="mastercard">
+									<img src="assets/img/shop/mastercard.png" height="20" width="30" alt="MasterCard" class="card-logo">
+									<span>MasterCard</span>
+								</div>
+								<!-- D17 Option -->
+								<div class="card-option" data-card="amex" id="amex">
+									<input type="radio" name="card-type" id="amex-radio" value="amex">
+									<img src="assets/img/shop/d17.png" height="20" width="30" alt="D17" class="card-logo">
+									<span>D17</span>
+								</div>
+							</div>
+							<!-- Visa Card Form -->
+							<div id="visa-form" class="card-form" style="display:none;">
+								<input type="text" class="form-control" name="visa-number" placeholder="Enter Visa Card Number">
+								<input type="text" class="form-control" name="visa-expiry" placeholder="MM/YY">
+								<input type="text" class="form-control" name="visa-cvv" placeholder="CVC">
+							</div>
+							<!-- MasterCard Form -->
+							<div id="mastercard-form" class="card-form" style="display:none;">
+								<input type="text" class="form-control" name="mastercard-number" placeholder="Enter MasterCard Number">
+								<input type="text" class="form-control" name="mastercard-expiry" placeholder="MM/YY">
+								<input type="text" class="form-control" name="mastercard-cvv" placeholder="CVC">
+							</div>
+							<!-- D17 Card Form -->
+							<div id="D17-form" class="card-form" style="display:none;">
+								<input type="text" class="form-control" name="D17-number" placeholder="Enter D17 Card Number">
+								<input type="text" class="form-control" name="D17-expiry" placeholder="MM/YY">
+								<input type="text" class="form-control" name="D17-cvv" placeholder="CVC">
+							</div>
+						</div>
+						<!-- /.card-details -->
+                    </div>
+                </li>
+            </ul>
+        </div> <!-- /.payment-methods -->
+		
+        <!-- Submit Button -->
+        <div class="row">
+            <div class="col-md-12">
+                <button type="submit" id="place-order" class="btn btn-primary">Place Order</button>
+            </div>
+        </div> <!-- /.row -->
+
+   
+</div> <!-- /.checkout-form-wrap -->
+</form>
+<!-- JavaScript for toggling card payment details -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const paymentCardRadio = document.querySelector('input[name="radio-93456936"][value="option2"]'); // Select "Payment Card" radio button
+    const cashRadio = document.querySelector('input[name="radio-93456936"][value="option1"]'); // Select "Cash" radio button
+    const cardDetailsSection = document.getElementById('card-details'); // Card details section
+    const cardOptions = document.querySelectorAll('.card-option'); // All card type options
+    const cardForms = document.querySelectorAll('.card-form'); // All card forms (Visa, MasterCard, Amex)
+
+    // Initially hide the card details section
+    cardDetailsSection.style.display = 'none';
+
+    // Show card details when "Payment Card" option is selected
+    paymentCardRadio.addEventListener('change', function () {
+        cardDetailsSection.style.display = 'block';
+    });
+
+    // Hide card details when "Cash" option is selected
+    cashRadio.addEventListener('change', function () {
+        cardDetailsSection.style.display = 'none';
+        cardForms.forEach(form => form.style.display = 'none'); // Hide all card forms
+    });
+
+    // Add click listeners to card options
+    cardOptions.forEach(option => {
+        option.addEventListener('click', function () {
+            // Hide all card forms initially
+            cardForms.forEach(form => form.style.display = 'none');
+
+            // Get the associated card type
+            const cardType = option.dataset.card;
+            const cardForm = document.getElementById(`${cardType}-form`);
+
+            // Show the corresponding card form
+            if (cardForm) {
+                cardForm.style.display = 'block';
+            }
+        });
+    });
+});
+
+
+</script>
+
+			
 
 
 			<!-- ===================
@@ -693,7 +831,7 @@
 			========================
 			* Use class "fixed-footer" to enable fixed footer (no effect on small devices).
 			-->
-			<footer id="footer" class="fixed-footer bg-dark text-gray-2">
+			<footer id="footer" class=" bg-dark text-gray-2">
 				<div class="container-fluid max-width-1200">
 					<div class="row">
 
@@ -703,10 +841,10 @@
 							<div class="footer-list">
 								<h4>- Information</h4>
 								<ul class="list-unstyled">
-									<li><a href="blog-list-2.html">Articles</a></li>
-									<li><a href="page-dummy.html">About Our Shop</a></li>
-									<li><a href="page-dummy.html">Secure Shopping</a></li>
-									<li><a href="contact.html">Contact</a></li>
+									<li><a href="blog-list-2.php">Articles</a></li>
+									<li><a href="page-dummy.php">About Our Shop</a></li>
+									<li><a href="page-dummy.php">Secure Shopping</a></li>
+									<li><a href="contact.php">Contact</a></li>
 								</ul>
 							</div>
 							<!-- End footer list -->
@@ -719,10 +857,10 @@
 							<div class="footer-list">
 								<h4>- Our Services</h4>
 								<ul class="list-unstyled">
-									<li><a href="page-dummy.html">Shipping &amp; Returns</a></li>
-									<li><a href="page-dummy.html">International Shipping</a></li>
-									<li><a href="page-dummy.html">Terms &amp; Conditions</a></li>
-									<li><a href="page-dummy.html">Privacy Policy</a></li>
+									<li><a href="page-dummy.php">Shipping &amp; Returns</a></li>
+									<li><a href="page-dummy.php">International Shipping</a></li>
+									<li><a href="page-dummy.php">Terms &amp; Conditions</a></li>
+									<li><a href="page-dummy.php">Privacy Policy</a></li>
 								</ul>
 							</div>
 							<!-- End footer list -->
@@ -733,7 +871,7 @@
 
 							<!-- Begin footer logo -->
 							<div class="footer-logo">
-								<a href="index.html"><img src="assets/img/logo-light.png" title="Home" alt="logo"></a>
+								<a href="index.php"><img src="assets/img/logo-light.png" title="Home" alt="logo"></a>
 							</div>
 							<!-- End footer logo -->
 
@@ -811,8 +949,9 @@
 		<!-- Theme master JS -->
 		<script src="assets/js/theme.js"></script>
 
-
-
+<script src="assets/js/shopt-cart.js"></script>
+<script src="assets/js/billing.js"></script>
+<script src="assets/js/cartphp.js"></script>
 		<!--==============================
 		///// Begin Google Analytics /////
 		============================== -->
@@ -840,5 +979,5 @@
 	</body>
 
 
-<!-- Mirrored from demo.themetorium.net/html/waldo/shop-checkout.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2024 15:51:20 GMT -->
+<!-- Mirrored from demo.themetorium.net/html/waldo/shop-checkout.php by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2024 15:51:20 GMT -->
 </html>
