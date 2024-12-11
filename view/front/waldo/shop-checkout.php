@@ -738,7 +738,7 @@ document.addEventListener('DOMContentLoaded', function() {
 									<span>MasterCard</span>
 								</div>
 								<!-- D17 Option -->
-								<div class="card-option" data-card="amex" id="amex">
+								<div class="card-option" data-card="D17" id="D17">
 									<input type="radio" name="card-type" id="amex-radio" value="amex">
 									<img src="assets/img/shop/d17.png" height="20" width="30" alt="D17" class="card-logo">
 									<span>D17</span>
