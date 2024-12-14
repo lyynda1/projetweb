@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -367,7 +366,7 @@
 
 
 				//permet de cree un clee API
-                url: '  https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyA3IdKw82wxDPh0awkEs_hSlXG1cYVlVok', // a l'aquelle la requete est envoyee contient key pur securise   l'accès à l'API
+                url: '  https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyCVCHPYc-MDP91zU0VFDRyJ4Y5rZ7yeYZg', // a l'aquelle la requete est envoyee contient key pur securise   l'accès à l'API
 
 
 
